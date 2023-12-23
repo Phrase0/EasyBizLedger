@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */; };
+		F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F811F3E32B370B3000D5E744 /* .swiftlint.yml */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
 		F8CE8E822B32E0F900389230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E812B32E0F900389230 /* ViewController.swift */; };
@@ -17,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E0276FA0516DD7DDDB29913 /* Pods-EasyBizLedger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBizLedger.release.xcconfig"; path = "Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger.release.xcconfig"; sourceTree = "<group>"; };
+		8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBizLedger.debug.xcconfig"; path = "Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger.debug.xcconfig"; sourceTree = "<group>"; };
+		DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBizLedger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F811F3E32B370B3000D5E744 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		744AAF1D7DA35657E9B164FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB44876F801473DFE6035AA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */,
+				8E0276FA0516DD7DDDB29913 /* Pods-EasyBizLedger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
+				F811F3E32B370B3000D5E744 /* .swiftlint.yml */,
 				F8CE8E7C2B32E0F900389230 /* EasyBizLedger */,
 				F8CE8E7B2B32E0F900389230 /* Products */,
+				BB44876F801473DFE6035AA3 /* Pods */,
+				744AAF1D7DA35657E9B164FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +104,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8CE8E912B32E0FA00389230 /* Build configuration list for PBXNativeTarget "EasyBizLedger" */;
 			buildPhases = (
+				E13E431BB3E66BA6FB9DEEE1 /* [CP] Check Pods Manifest.lock */,
 				F8CE8E762B32E0F900389230 /* Sources */,
 				F8CE8E772B32E0F900389230 /* Frameworks */,
 				F8CE8E782B32E0F900389230 /* Resources */,
+				135999030492F6DE0EC38CDC /* [CP] Embed Pods Frameworks */,
+				F8CE8E942B35F00400389230 /* SwiftLint */,
+				F8D888812B371BAB00C1E482 /* FirebaseCrashlytics */,
 			);
 			buildRules = (
 			);
@@ -128,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */,
 				F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */,
 				F8CE8E8A2B32E0FA00389230 /* Assets.xcassets in Resources */,
 				F8CE8E852B32E0F900389230 /* Main.storyboard in Resources */,
@@ -135,6 +167,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		135999030492F6DE0EC38CDC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E13E431BB3E66BA6FB9DEEE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBizLedger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8CE8E942B35F00400389230 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		F8D888812B371BAB00C1E482 /* FirebaseCrashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = FirebaseCrashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8CE8E762B32E0F900389230 /* Sources */ = {
@@ -220,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,6 +396,7 @@
 		};
 		F8CE8E922B32E0FA00389230 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,6 +410,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +426,7 @@
 		};
 		F8CE8E932B32E0FA00389230 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0276FA0516DD7DDDB29913 /* Pods-EasyBizLedger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -327,6 +440,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
