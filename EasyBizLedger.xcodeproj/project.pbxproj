@@ -16,6 +16,7 @@
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
 		F8CE8E8A2B32E0FA00389230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E892B32E0FA00389230 /* Assets.xcassets */; };
 		F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */; };
+		F8D888832B371C8700C1E482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8D888822B371C8700C1E482 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F8CE8E892B32E0FA00389230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8CE8E8C2B32E0FA00389230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8CE8E8E2B32E0FA00389230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8D888822B371C8700C1E482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
+				F8D888822B371C8700C1E482 /* GoogleService-Info.plist */,
 				F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */,
 			);
 			path = EasyBizLedger;
@@ -161,6 +164,7 @@
 			files = (
 				F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */,
 				F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */,
+				F8D888832B371C8700C1E482 /* GoogleService-Info.plist in Resources */,
 				F8CE8E8A2B32E0FA00389230 /* Assets.xcassets in Resources */,
 				F8CE8E852B32E0F900389230 /* Main.storyboard in Resources */,
 			);
