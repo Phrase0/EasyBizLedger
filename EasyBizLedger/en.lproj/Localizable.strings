@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  EasyBizLedger
+
+  Created by Peiyun on 2023/12/24.
+  
+*/
+
+"HomeVC.addCategory" = "AddCategory";
