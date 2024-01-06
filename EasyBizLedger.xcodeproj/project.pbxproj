@@ -9,13 +9,22 @@
 /* Begin PBXBuildFile section */
 		E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */; };
 		F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F811F3E32B370B3000D5E744 /* .swiftlint.yml */; };
+		F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
-		F8CE8E822B32E0F900389230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E812B32E0F900389230 /* ViewController.swift */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
 		F8CE8E8A2B32E0FA00389230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E892B32E0FA00389230 /* Assets.xcassets */; };
 		F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */; };
 		F8D888832B371C8700C1E482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8D888822B371C8700C1E482 /* GoogleService-Info.plist */; };
+		F8D8888E2B3749BB00C1E482 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8D888902B3749BB00C1E482 /* Localizable.strings */; };
+		F8D888942B374A9A00C1E482 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8D888962B374A9A00C1E482 /* InfoPlist.strings */; };
+		F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888992B39B3D700C1E482 /* TabBarViewController.swift */; };
+		F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */; };
+		F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */; };
+		F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A02B39E60200C1E482 /* HomeViewController.swift */; };
+		F8D888A32B39E65E00C1E482 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A22B39E65E00C1E482 /* AddViewController.swift */; };
+		F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A42B39E6D400C1E482 /* ListViewController.swift */; };
+		F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,15 +32,27 @@
 		8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBizLedger.debug.xcconfig"; path = "Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger.debug.xcconfig"; sourceTree = "<group>"; };
 		DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBizLedger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F811F3E32B370B3000D5E744 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F8CE8E812B32E0F900389230 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8CE8E872B32E0F900389230 /* EasyBizLedger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyBizLedger.xcdatamodel; sourceTree = "<group>"; };
 		F8CE8E892B32E0FA00389230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8CE8E8C2B32E0FA00389230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8CE8E8E2B32E0FA00389230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8D888822B371C8700C1E482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8D8888B2B37497D00C1E482 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F8D8888F2B3749BB00C1E482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F8D888912B3749C300C1E482 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F8D888952B374A9A00C1E482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F8D888972B374AA000C1E482 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F8D888992B39B3D700C1E482 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		F8D888A02B39E60200C1E482 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F8D888A22B39E65E00C1E482 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		F8D888A42B39E6D400C1E482 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +84,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F8C8EED82B49ACB1003449F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
@@ -87,14 +116,39 @@
 			children = (
 				F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */,
 				F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */,
-				F8CE8E812B32E0F900389230 /* ViewController.swift */,
+				F8D8889B2B39E4E000C1E482 /* Extension */,
+				F8D888982B39B38100C1E482 /* View */,
+				F8C8EED82B49ACB1003449F5 /* ViewModel */,
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
 				F8D888822B371C8700C1E482 /* GoogleService-Info.plist */,
 				F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */,
+				F8D888902B3749BB00C1E482 /* Localizable.strings */,
+				F8D888962B374A9A00C1E482 /* InfoPlist.strings */,
 			);
 			path = EasyBizLedger;
+			sourceTree = "<group>";
+		};
+		F8D888982B39B38100C1E482 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8D888992B39B3D700C1E482 /* TabBarViewController.swift */,
+				F8D888A02B39E60200C1E482 /* HomeViewController.swift */,
+				F8D888A22B39E65E00C1E482 /* AddViewController.swift */,
+				F8D888A42B39E6D400C1E482 /* ListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8D8889B2B39E4E000C1E482 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */,
+				F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */,
+				F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +197,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = F8CE8E712B32E0F800389230;
 			productRefGroup = F8CE8E7B2B32E0F900389230 /* Products */;
@@ -159,6 +214,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D8888E2B3749BB00C1E482 /* Localizable.strings in Resources */,
+				F8D888942B374A9A00C1E482 /* InfoPlist.strings in Resources */,
 				F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */,
 				F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */,
 				F8D888832B371C8700C1E482 /* GoogleService-Info.plist in Resources */,
@@ -252,9 +309,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
-				F8CE8E822B32E0F900389230 /* ViewController.swift in Sources */,
+				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
+				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
+				F8D888A32B39E65E00C1E482 /* AddViewController.swift in Sources */,
+				F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */,
 				F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */,
+				F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */,
+				F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */,
 				F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */,
+				F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */,
+				F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +329,27 @@
 			isa = PBXVariantGroup;
 			children = (
 				F8CE8E8C2B32E0FA00389230 /* Base */,
+				F8D8888B2B37497D00C1E482 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F8D888902B3749BB00C1E482 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D8888F2B3749BB00C1E482 /* en */,
+				F8D888912B3749C300C1E482 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F8D888962B374A9A00C1E482 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D888952B374A9A00C1E482 /* en */,
+				F8D888972B374AA000C1E482 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -276,6 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -322,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -336,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -376,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -401,7 +486,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -430,7 +515,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
