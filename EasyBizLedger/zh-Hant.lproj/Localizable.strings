@@ -6,3 +6,6 @@
   
 */
 "HomeVC.addCategory" = "新增類別";
+"AddVC.done" = "完成";
+"AddVC.cancel" = "取消";
+"AddVC.categoryTitleLabel" = "類別名稱";

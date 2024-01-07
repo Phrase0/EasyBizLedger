@@ -10,6 +10,9 @@
 		E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */; };
 		F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F811F3E32B370B3000D5E744 /* .swiftlint.yml */; };
 		F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */; };
+		F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */; };
+		F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */; };
+		F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE22B4AF040003449F5 /* AddCategoryViewModel.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
@@ -33,6 +36,9 @@
 		DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBizLedger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F811F3E32B370B3000D5E744 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		F8C8EEE22B4AF040003449F5 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,8 +94,36 @@
 			isa = PBXGroup;
 			children = (
 				F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */,
+				F8C8EEE22B4AF040003449F5 /* AddCategoryViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F8C8EEDB2B4AAE0A003449F5 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEDD2B4AAE5F003449F5 /* Model */,
+				F8C8EEDC2B4AAE38003449F5 /* View */,
+				F8C8EED82B49ACB1003449F5 /* ViewModel */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		F8C8EEDC2B4AAE38003449F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8D888A02B39E60200C1E482 /* HomeViewController.swift */,
+				F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8C8EEDD2B4AAE5F003449F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F8CE8E712B32E0F800389230 = {
@@ -116,9 +150,9 @@
 			children = (
 				F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */,
 				F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */,
-				F8D8889B2B39E4E000C1E482 /* Extension */,
 				F8D888982B39B38100C1E482 /* View */,
-				F8C8EED82B49ACB1003449F5 /* ViewModel */,
+				F8D8889B2B39E4E000C1E482 /* Extension */,
+				F8C8EEDB2B4AAE0A003449F5 /* HomePage */,
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
@@ -134,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				F8D888992B39B3D700C1E482 /* TabBarViewController.swift */,
-				F8D888A02B39E60200C1E482 /* HomeViewController.swift */,
 				F8D888A22B39E65E00C1E482 /* AddViewController.swift */,
 				F8D888A42B39E6D400C1E482 /* ListViewController.swift */,
 			);
@@ -314,8 +347,11 @@
 				F8D888A32B39E65E00C1E482 /* AddViewController.swift in Sources */,
 				F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */,
 				F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */,
+				F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */,
 				F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */,
+				F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */,
 				F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */,
+				F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */,
 				F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */,
 				F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */,
 				F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */,

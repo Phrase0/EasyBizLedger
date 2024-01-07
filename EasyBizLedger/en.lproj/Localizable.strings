@@ -6,4 +6,7 @@
   
 */
 
-"HomeVC.addCategory" = "AddCategory";
+"HomeVC.addCategory" = "Add category";
+"AddVC.done" = "Done";
+"AddVC.cancel" = "Cancel";
+"AddVC.categoryTitleLabel" = "Category Title";

@@ -1,21 +1,22 @@
 //
-//  HomeViewModel.swift
+//  HomeModel.swift
 //  EasyBizLedger
 //
-//  Created by Peiyun on 2024/1/6.
+//  Created by Peiyun on 2024/1/7.
 //
 
 import UIKit
 
-class HomeViewModel {
-
+struct HomeModel {
+    
     var title: String
     var color: UIColor
     var imageName: String
-
+    
     init(title: String, color: UIColor, imageName: String) {
         self.title = title
         self.color = color
         self.imageName = imageName
     }
+    
 }
