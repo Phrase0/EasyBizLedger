@@ -12,6 +12,7 @@ target 'EasyBizLedger' do
  pod 'Kingfisher', '~> 7.0'
  pod 'Firebase/Crashlytics'
  pod 'SnapKit'
+ pod 'IQKeyboardManagerSwift'
 
 post_install do |installer|
   installer.generated_projects.each do |project|

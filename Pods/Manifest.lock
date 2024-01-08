@@ -44,6 +44,7 @@ PODS:
   - "GoogleUtilities/NSData+zlib (7.11.5)"
   - GoogleUtilities/UserDefaults (7.11.5):
     - GoogleUtilities/Logger
+  - IQKeyboardManagerSwift (6.5.12)
   - Kingfisher (7.9.1)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -58,6 +59,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Crashlytics
+  - IQKeyboardManagerSwift
   - Kingfisher (~> 7.0)
   - SnapKit
   - SwiftLint
@@ -73,6 +75,7 @@ SPEC REPOS:
     - FirebaseSessions
     - GoogleDataTransport
     - GoogleUtilities
+    - IQKeyboardManagerSwift
     - Kingfisher
     - nanopb
     - PromisesObjC
@@ -90,6 +93,7 @@ SPEC CHECKSUMS:
   FirebaseSessions: e5f4caa188dc8bc6142abc974355be75b042215e
   GoogleDataTransport: 54dee9d48d14580407f8f5fbf2f496e92437a2f2
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
+  IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
   Kingfisher: 1d14e9f59cbe19389f591c929000332bf70efd32
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
@@ -97,6 +101,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
 
-PODFILE CHECKSUM: 9e5d39f951ff2fe27eac90383b719708bf4fec89
+PODFILE CHECKSUM: 5009a2414f328711bd4b2b6d2eca41728d5ecf53
 
 COCOAPODS: 1.12.1

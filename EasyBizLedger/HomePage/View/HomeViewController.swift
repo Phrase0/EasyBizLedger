@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
     
     @objc private func addButtonTapped() {
         let addCategoryViewController = AddCategoryViewController()
+        addCategoryViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addCategoryViewController, animated: true)
     }
     
