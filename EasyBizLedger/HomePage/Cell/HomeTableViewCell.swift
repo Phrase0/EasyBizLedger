@@ -41,30 +41,29 @@ class HomeTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var photo: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.setColor(lightColor: .darkGray, darkColor: .white)
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 0
-        label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    lazy var photoImageView = {
+        let photoImageView = UIImageView()
+        photoImageView.contentMode = .scaleAspectFill
+        photoImageView.clipsToBounds = true
+        photoImageView.translatesAutoresizingMaskIntoConstraints = false
+        return photoImageView
     }()
     
     // MARK: - init
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellUI()
         nameLabel.sizeToFit()
         priceLabel.sizeToFit()
         stockLabel.sizeToFit()
+        photoImageView.sizeToFit()
     }
     
     override func prepareForReuse() {
         nameLabel.text = nil
         priceLabel.text = nil
         stockLabel.text = nil
+        photoImageView.image = nil
     }
     
     required init?(coder: NSCoder) {
@@ -78,23 +77,34 @@ class HomeTableViewCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(stockLabel)
-        contentView.addSubview(photo)
+        contentView.addSubview(photoImageView)
 
+        photoImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.bottom.equalToSuperview().offset(-15)
+            make.leading.equalToSuperview().offset(15)
+            make.height.equalTo(70)
+            make.width.equalTo(photoImageView.snp.height)
+        }
+        
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
-            make.leading.trailing.equalToSuperview().offset(30)
+            make.leading.equalTo(photoImageView.snp_trailingMargin).offset(15)
+            make.trailing.equalToSuperview().offset(-15)
         }
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp_bottomMargin).offset(15)
-            make.leading.trailing.equalToSuperview().offset(30)
+            make.leading.equalTo(photoImageView.snp_trailingMargin).offset(15)
+            make.trailing.equalToSuperview().offset(-15)
         }
         
         stockLabel.snp.makeConstraints { make in
             make.top.equalTo(priceLabel.snp_bottomMargin).offset(15)
-            make.leading.trailing.equalToSuperview().offset(30)
+            make.leading.equalTo(photoImageView.snp_trailingMargin).offset(15)
             make.bottom.equalToSuperview().offset(-15)
+            make.trailing.equalToSuperview().offset(-15)
         }
-  
+
     }
     
 }

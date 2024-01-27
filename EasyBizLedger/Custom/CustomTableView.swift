@@ -15,14 +15,14 @@ class CustomTableView: UITableView {
         allowsSelection: Bool,
         registerCells: [UITableViewCell.Type]
     ) {
-        super.init(frame: .zero, style: .plain)
+        super.init(frame: .zero, style: .insetGrouped)
         self.rowHeight = rowHeight
         self.separatorStyle = separatorStyle
         self.allowsSelection = allowsSelection
         for cellClass in registerCells {
             self.registerCell(cellClass)
         }
-        self.backgroundColor = .baseBackgroundColor
+        // self.backgroundColor = .systemGray5
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

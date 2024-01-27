@@ -55,12 +55,12 @@ class HomeViewController: UIViewController {
                     return UITableViewCell()
                 }
                 
-                // 設定 HomeTableViewCell 的元素
                 cell.nameLabel.text = category.nameLabel
                 cell.priceLabel.text = "Price: \(category.priceLabel)"
                 cell.stockLabel.text = "Stock: \(category.stockLabel)"
-                cell.photo.text = "Photo: \(category.photo)" // 假設這裡使用 UILabel 顯示圖片名稱
-                
+                cell.photoImageView.image = category.photo
+                cell.contentView.backgroundColor = .baseBackgroundColor
+                cell.selectionStyle = .none
                 return cell
             }
         )
@@ -69,9 +69,9 @@ class HomeViewController: UIViewController {
     private func applySnapshot() {
         // 創建三個假的 Category
         let categoriesInSection1 = [
-            Item(nameLabel: "Category 1", priceLabel: 10, stockLabel: 20, photo: "photo1"),
-            Item(nameLabel: "Category 2", priceLabel: 15, stockLabel: 25, photo: "photo2"),
-            Item(nameLabel: "Category 3", priceLabel: 20, stockLabel: 30, photo: "photo3")
+            Item(nameLabel: "Category 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
+            Item(nameLabel: "Category 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo")),
+            Item(nameLabel: "Category 3", priceLabel: 20, stockLabel: 30, photo: UIImage(imageLiteralResourceName: "demo"))
         ]
 
 //        let categoriesInSection2 = [
@@ -90,7 +90,6 @@ class HomeViewController: UIViewController {
 
         // Apply the snapshot to the dataSource
         dataSource.apply(snapshot, animatingDifferences: true)
-        print(snapshot)
     }
     
     // ---------------------------------------------------
@@ -119,9 +118,9 @@ class HomeViewController: UIViewController {
     private func setupAutolayout() {
         // set homeTableView
         homeTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-30)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
     
