@@ -9,14 +9,14 @@ import UIKit
 
 struct HomeModel {
     
-    var title: String
-    var color: UIColor
-    var imageName: String
-    
-    init(title: String, color: UIColor, imageName: String) {
-        self.title = title
-        self.color = color
-        self.imageName = imageName
-    }
-    
+}
+enum Category {
+    case item
+}
+
+struct Item: Hashable {
+    var nameLabel: String
+    var priceLabel: Int
+    var stockLabel: Int
+    var photo: String
 }
