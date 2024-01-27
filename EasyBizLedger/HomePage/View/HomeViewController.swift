@@ -46,53 +46,7 @@ class HomeViewController: UIViewController {
         setupAutolayout()
     }
     
-    // ---------------------------------------------------
-    private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource<Category, Item>(
-            tableView: homeTableView,
-            cellProvider: { tableView, indexPath, category in
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
-                    return UITableViewCell()
-                }
-                
-                cell.nameLabel.text = category.nameLabel
-                cell.priceLabel.text = "Price: \(category.priceLabel)"
-                cell.stockLabel.text = "Stock: \(category.stockLabel)"
-                cell.photoImageView.image = category.photo
-                cell.contentView.backgroundColor = .baseBackgroundColor
-                cell.selectionStyle = .none
-                return cell
-            }
-        )
-    }
     
-    private func applySnapshot() {
-        // 創建三個假的 Category
-        let categoriesInSection1 = [
-            Item(nameLabel: "Category 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
-            Item(nameLabel: "Category 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo")),
-            Item(nameLabel: "Category 3", priceLabel: 20, stockLabel: 30, photo: UIImage(imageLiteralResourceName: "demo"))
-        ]
-
-//        let categoriesInSection2 = [
-//            Item(nameLabel: "Category A", priceLabel: 25, stockLabel: 15, photo: "photoA"),
-//            Item(nameLabel: "Category B", priceLabel: 30, stockLabel: 10, photo: "photoB"),
-//            Item(nameLabel: "Category C", priceLabel: 35, stockLabel: 5, photo: "photoC")
-//        ]
-
-        // 清除之前的 snapshot
-        snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-
-        // Apply fake data to the snapshot
-        snapshot.appendSections([.item])
-        snapshot.appendItems(categoriesInSection1, toSection: .item)
-        //snapshot.appendItems(categoriesInSection2, toSection: .item)
-
-        // Apply the snapshot to the dataSource
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    // ---------------------------------------------------
     
     private func setupUI() {
         
@@ -133,5 +87,84 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        
+        // add titleLabel
+        let titleLabel = UILabel()
+        titleLabel.text = "Section \(section + 1)"
+        titleLabel.textColor = .black
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        headerView.addSubview(titleLabel)
+        
+        // add editButton
+        let editButton = UIButton(type: .system)
+        let editImage = UIImage(systemName: "pencil")
+        editButton.setImage(editImage, for: .normal)
+        editButton.setTitle(nil, for: .normal)
+        editButton.addTarget(self, action: #selector(editButtonTapped(_:)), for: .touchUpInside)
+        headerView.addSubview(editButton)
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
+        }
+        
+        editButton.snp.makeConstraints { make in
+            make.leading.equalTo(titleLabel.snp_trailingMargin).offset(20)
+            make.centerY.equalToSuperview()
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+    // Edit button
+    @objc func editButtonTapped(_ sender: UIButton) {
+        print("Hi")
+    }
+    
+    // ---------------------------------------------------
+    private func configureDataSource() {
+        dataSource = UITableViewDiffableDataSource<Category, Item>(
+            tableView: homeTableView,
+            cellProvider: { tableView, indexPath, category in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
+                    return UITableViewCell()
+                }
+                
+                cell.nameLabel.text = category.nameLabel
+                cell.priceLabel.text = "Price: \(category.priceLabel)"
+                cell.stockLabel.text = "Stock: \(category.stockLabel)"
+                cell.photoImageView.image = category.photo
+                cell.contentView.backgroundColor = .baseBackgroundColor
+                cell.selectionStyle = .none
+                return cell
+            }
+        )
+    }
+    
+    private func applySnapshot() {
+        // 創建三個假的 Category
+        let categoriesInSection1 = [
+            Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
+            Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo")),
+            Item(nameLabel: "Item 3", priceLabel: 20, stockLabel: 30, photo: UIImage(imageLiteralResourceName: "demo"))
+        ]
+        // clean snapshot
+        snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
+        
+        // Apply fake data to the snapshot
+        snapshot.appendSections([.item])
+        snapshot.appendItems(categoriesInSection1, toSection: .item)
+        
+        // Apply the snapshot to the dataSource
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    // ---------------------------------------------------
     
 }
