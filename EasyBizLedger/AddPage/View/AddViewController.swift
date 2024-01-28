@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  AddViewController.swift
 //  EasyBizLedger
 //
 //  Created by Peiyun on 2023/12/26.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class AddViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +18,4 @@ class ListViewController: UIViewController {
         // backgroundColor
         view.backgroundColor = .baseBackgroundColor
     }
-
 }

@@ -52,7 +52,7 @@ class HomeTableViewCell: UITableViewCell {
     lazy var addButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
+        // button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = UIColor.lightGray
         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
@@ -61,7 +61,7 @@ class HomeTableViewCell: UITableViewCell {
     lazy var subButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
+        // button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = UIColor.lightGray
         button.addTarget(self, action: #selector(subButtonTapped), for: .touchUpInside)
         return button

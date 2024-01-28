@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
     
     var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
     var dataSource: UITableViewDiffableDataSource<Category, Item>!
-    var sectionNames = ["Section A", "Section B", "Section C"]
+    var sectionNames:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,8 @@ class HomeViewController: UIViewController {
         view.addSubview(homeTableView)
         setupUI()
         configureDataSource()
-        // applySnapshot()
+        //applySnapshot()
+        applySnapshot2()
         
     }
     
@@ -101,11 +102,19 @@ extension HomeViewController: UITableViewDelegate {
         
         // add editButton
         let editButton = UIButton(type: .system)
-        let editImage = UIImage(systemName: "pencil")
+        let editImage = UIImage(systemName: "square.and.pencil")
         editButton.setImage(editImage, for: .normal)
-        editButton.setTitle(nil, for: .normal)
+        editButton.tintColor = UIColor.gray
         editButton.addTarget(self, action: #selector(editButtonTapped(_:)), for: .touchUpInside)
         headerView.addSubview(editButton)
+        
+        // add deleteButton
+        let deleteButton = UIButton(type: .system)
+        let deleteImage = UIImage(systemName: "trash")
+        deleteButton.setImage(deleteImage, for: .normal)
+        deleteButton.tintColor = UIColor.gray
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
+        headerView.addSubview(deleteButton)
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)
@@ -114,6 +123,11 @@ extension HomeViewController: UITableViewDelegate {
         
         editButton.snp.makeConstraints { make in
             make.leading.equalTo(titleLabel.snp_trailingMargin).offset(20)
+            make.centerY.equalToSuperview()
+        }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-15)
             make.centerY.equalToSuperview()
         }
         
@@ -126,9 +140,32 @@ extension HomeViewController: UITableViewDelegate {
     
     // Edit button
     @objc func editButtonTapped(_ sender: UIButton) {
-        print("Hi")
+        let addCategoryViewController = AddCategoryViewController()
+        addCategoryViewController.delegate = self
+        addCategoryViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(addCategoryViewController, animated: true)
     }
     
+    @objc func deleteButtonTapped(_ sender: UIButton) {
+        let section = sender.tag
+        
+        // delete sectionNames's title
+        guard section < sectionNames.count else {
+            return
+        }
+        
+        let categoryName = sectionNames[section]
+        sectionNames.remove(at: section)
+
+        // delete corresponding section from snapshot
+        var currentSnapshot = dataSource.snapshot()
+        if let deletedSection = currentSnapshot.sectionIdentifiers.first(where: { $0.title == categoryName }) {
+            currentSnapshot.deleteSections([deletedSection])
+            // update snapshot
+            dataSource.apply(currentSnapshot, animatingDifferences: false)
+        }
+        
+    }
     // ---------------------------------------------------
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<Category, Item>(
@@ -176,10 +213,19 @@ extension HomeViewController: UITableViewDelegate {
     // ---------------------------------------------------
     func applySnapshot2() {
         
+        // clean snapShot
+        snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
         for sectionName in sectionNames {
             let newSection = Category(title: sectionName)
             // 為每個 sectionName 增加 section
             snapshot.appendSections([newSection])
+            
+            let categoriesInSection1 = [
+                Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
+                Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo"))
+            ]
+            
+            snapshot.appendItems(categoriesInSection1, toSection: newSection)
         }
         
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -189,12 +235,8 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController: AddCategoryViewControllerDelegate {
     func addCategoryViewControllerDidFinish(with categoryName: String) {
-        
         sectionNames.append(categoryName)
-        let newSection = Category(title: categoryName)
-        snapshot.appendSections([newSection])
-        dataSource.apply(snapshot, animatingDifferences: false)
-
+        applySnapshot2()
     }
     
 }

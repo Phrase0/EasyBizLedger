@@ -149,6 +149,22 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		F8C8EEEC2B669F79003449F5 /* AddPage */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEED2B66A1BE003449F5 /* View */,
+			);
+			path = AddPage;
+			sourceTree = "<group>";
+		};
+		F8C8EEED2B66A1BE003449F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8D888A22B39E65E00C1E482 /* AddViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +193,7 @@
 				F8D888982B39B38100C1E482 /* View */,
 				F8D8889B2B39E4E000C1E482 /* Extension */,
 				F8C8EEDB2B4AAE0A003449F5 /* HomePage */,
+				F8C8EEEC2B669F79003449F5 /* AddPage */,
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
@@ -192,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				F8D888992B39B3D700C1E482 /* TabBarViewController.swift */,
-				F8D888A22B39E65E00C1E482 /* AddViewController.swift */,
 				F8D888A42B39E6D400C1E482 /* ListViewController.swift */,
 			);
 			path = View;
