@@ -10,8 +10,15 @@ import UIKit
 struct HomeModel {
     
 }
-enum Category {
-    case item
+
+struct Category: Hashable {
+    let identifier: UUID
+    var title: String
+
+    init(title: String) {
+        self.identifier = UUID()
+        self.title = title
+    }
 }
 
 struct Item: Hashable {

@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
+     
     // create UIButton
     let addButton = UIButton(type: .custom)
     
@@ -27,8 +27,8 @@ class HomeViewController: UIViewController {
             registerCells: [HomeTableViewCell.self])
     }()
     
-    private var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-    private var dataSource: UITableViewDiffableDataSource<Category, Item>!
+    var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
+    var dataSource: UITableViewDiffableDataSource<Category, Item>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +38,12 @@ class HomeViewController: UIViewController {
         setupUI()
         configureDataSource()
         applySnapshot()
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupAutolayout()
     }
-    
-    
     
     private func setupUI() {
         
@@ -91,9 +88,10 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         
+        let category = snapshot.sectionIdentifiers[section]
         // add titleLabel
         let titleLabel = UILabel()
-        titleLabel.text = "Section \(section + 1)"
+        titleLabel.text = category.title
         titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         headerView.addSubview(titleLabel)
@@ -149,22 +147,50 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     private func applySnapshot() {
-        // 創建三個假的 Category
+        // 創建兩個假的 Category
         let categoriesInSection1 = [
+            Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
+            Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo"))
+        ]
+        let categoriesInSection2 = [
             Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
             Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo")),
             Item(nameLabel: "Item 3", priceLabel: 20, stockLabel: 30, photo: UIImage(imageLiteralResourceName: "demo"))
         ]
-        // clean snapshot
-        snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-        
+
         // Apply fake data to the snapshot
-        snapshot.appendSections([.item])
-        snapshot.appendItems(categoriesInSection1, toSection: .item)
-        
+        let newSection1 = Category(title: "文具")
+        snapshot.appendSections([newSection1])
+        snapshot.appendItems(categoriesInSection1, toSection: newSection1)
+
+        let newSection2 = Category(title: "衣物")
+        snapshot.appendSections([newSection2])
+        snapshot.appendItems(categoriesInSection2, toSection: newSection2)
+
         // Apply the snapshot to the dataSource
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     // ---------------------------------------------------
     
 }
+
+//extension HomeViewController: AddCategoryViewControllerDelegate {
+//    func addCategoryViewControllerDidFinish(with categoryName: String) {
+//        let addCategoryVC = AddCategoryViewController()
+//        addCategoryVC.delegate = self
+//
+//        // 处理新增 section 的逻辑
+//        var currentSnapshot = dataSource.snapshot()
+//
+//        // 无论是否已经存在该 section，都先添加新的 section
+//        let newSection = Category(title: categoryName)
+//        currentSnapshot.appendSections([newSection])
+//
+//        // 更新 snapshot
+//        snapshot = currentSnapshot
+//
+//        // 套用 snapshot 到 dataSource
+//        dataSource.apply(snapshot, animatingDifferences: true)
+//
+//    }
+//}
