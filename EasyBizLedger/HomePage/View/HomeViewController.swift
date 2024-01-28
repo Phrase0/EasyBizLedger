@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-     
+    
     // create UIButton
     let addButton = UIButton(type: .custom)
     
@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     
     var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
     var dataSource: UITableViewDiffableDataSource<Category, Item>!
+    var sectionNames = ["Section A", "Section B", "Section C"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,8 @@ class HomeViewController: UIViewController {
         view.addSubview(homeTableView)
         setupUI()
         configureDataSource()
-        applySnapshot()
+        // applySnapshot()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,6 +79,7 @@ class HomeViewController: UIViewController {
     
     @objc private func addButtonTapped() {
         let addCategoryViewController = AddCategoryViewController()
+        addCategoryViewController.delegate = self
         addCategoryViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addCategoryViewController, animated: true)
     }
@@ -157,40 +160,41 @@ extension HomeViewController: UITableViewDelegate {
             Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo")),
             Item(nameLabel: "Item 3", priceLabel: 20, stockLabel: 30, photo: UIImage(imageLiteralResourceName: "demo"))
         ]
-
+        
         // Apply fake data to the snapshot
         let newSection1 = Category(title: "文具")
         snapshot.appendSections([newSection1])
         snapshot.appendItems(categoriesInSection1, toSection: newSection1)
-
+        
         let newSection2 = Category(title: "衣物")
         snapshot.appendSections([newSection2])
         snapshot.appendItems(categoriesInSection2, toSection: newSection2)
-
+        
         // Apply the snapshot to the dataSource
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     // ---------------------------------------------------
+    func applySnapshot2() {
+        
+        for sectionName in sectionNames {
+            let newSection = Category(title: sectionName)
+            // 為每個 sectionName 增加 section
+            snapshot.appendSections([newSection])
+        }
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
     
 }
 
-//extension HomeViewController: AddCategoryViewControllerDelegate {
-//    func addCategoryViewControllerDidFinish(with categoryName: String) {
-//        let addCategoryVC = AddCategoryViewController()
-//        addCategoryVC.delegate = self
-//
-//        // 处理新增 section 的逻辑
-//        var currentSnapshot = dataSource.snapshot()
-//
-//        // 无论是否已经存在该 section，都先添加新的 section
-//        let newSection = Category(title: categoryName)
-//        currentSnapshot.appendSections([newSection])
-//
-//        // 更新 snapshot
-//        snapshot = currentSnapshot
-//
-//        // 套用 snapshot 到 dataSource
-//        dataSource.apply(snapshot, animatingDifferences: true)
-//
-//    }
-//}
+extension HomeViewController: AddCategoryViewControllerDelegate {
+    func addCategoryViewControllerDidFinish(with categoryName: String) {
+        
+        sectionNames.append(categoryName)
+        let newSection = Category(title: categoryName)
+        snapshot.appendSections([newSection])
+        dataSource.apply(snapshot, animatingDifferences: false)
+
+    }
+    
+}

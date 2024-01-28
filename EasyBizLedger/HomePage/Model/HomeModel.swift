@@ -22,8 +22,17 @@ struct Category: Hashable {
 }
 
 struct Item: Hashable {
+    let identifier: UUID
     var nameLabel: String
     var priceLabel: Int
     var stockLabel: Int
     var photo: UIImage
+    
+    init(nameLabel: String, priceLabel: Int, stockLabel: Int, photo: UIImage) {
+        self.identifier = UUID()
+        self.nameLabel = nameLabel
+        self.priceLabel = priceLabel
+        self.stockLabel = stockLabel
+        self.photo = photo
+    }
 }

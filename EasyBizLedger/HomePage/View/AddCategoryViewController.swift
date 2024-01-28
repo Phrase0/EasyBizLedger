@@ -77,7 +77,7 @@ class AddCategoryViewController: UIViewController {
         // create a UIBarButtonItem
         let cancelBarButtonItem = UIBarButtonItem(customView: cancelButton)
         navigationItem.leftBarButtonItem = cancelBarButtonItem
-
+        
         // textFieldBackgroundView
         view.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.layer.cornerRadius = 10
@@ -118,13 +118,20 @@ class AddCategoryViewController: UIViewController {
     }
     
     @objc private func doneButtonTapped() {
-        guard let categoryName = categoryTextField.text, !categoryName.isEmpty else { return }
+        guard let categoryName = categoryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !categoryName.isEmpty else {
+            showAlert(message: "請輸入有效的分類名稱")
+            return }
         delegate?.addCategoryViewControllerDidFinish(with: categoryName)
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func cancelButtonTapped() {
         navigationController?.popViewController(animated: true)
-    }    
-
+    }
+    
+    private func showAlert(message: String) {
+        let alertController = UIAlertController(title: "警告", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 }
