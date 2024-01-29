@@ -10,6 +10,7 @@ import SnapKit
 
 protocol AddCategoryViewControllerDelegate: AnyObject {
     func addCategoryViewControllerDidFinish(with categoryName: String)
+    func editCategoryViewControllerDidFinish(with categoryName: String)
 }
 
 class AddCategoryViewController: UIViewController {
@@ -19,6 +20,8 @@ class AddCategoryViewController: UIViewController {
     private var categoryTitleLabel = UILabel()
     private var textFieldBackgroundView = UIView()
     private var categoryTextField = UITextField()
+    
+    var originatingPage: Int?
     
     private var addCategoryViewModel: AddCategoryViewModel = {
         return AddCategoryViewModel(
@@ -119,9 +122,13 @@ class AddCategoryViewController: UIViewController {
     
     @objc private func doneButtonTapped() {
         guard let categoryName = categoryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !categoryName.isEmpty else {
-            showAlert(message: "請輸入有效的分類名稱")
+            showAlert(message: "Please enter a valid category name")
             return }
-        delegate?.addCategoryViewControllerDidFinish(with: categoryName)
+        if originatingPage == 1 {
+            delegate?.addCategoryViewControllerDidFinish(with: categoryName)
+        } else {
+            delegate?.editCategoryViewControllerDidFinish(with: categoryName)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -130,8 +137,8 @@ class AddCategoryViewController: UIViewController {
     }
     
     private func showAlert(message: String) {
-        let alertController = UIAlertController(title: "警告", message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: nil))
+        let alertController = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 }

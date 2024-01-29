@@ -19,6 +19,11 @@ struct Category: Hashable {
         self.identifier = UUID()
         self.title = title
     }
+    
+    init(identifier: UUID, title: String) {
+        self.identifier = identifier
+        self.title = title
+    }
 }
 
 struct Item: Hashable {

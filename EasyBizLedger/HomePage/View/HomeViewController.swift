@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
     var dataSource: UITableViewDiffableDataSource<Category, Item>!
     var sectionNames:[String] = []
-    
+    var sectionTag:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +38,7 @@ class HomeViewController: UIViewController {
         view.addSubview(homeTableView)
         setupUI()
         configureDataSource()
-        //applySnapshot()
-        applySnapshot2()
+        applySnapshot()
         
     }
     
@@ -81,6 +80,7 @@ class HomeViewController: UIViewController {
     @objc private func addButtonTapped() {
         let addCategoryViewController = AddCategoryViewController()
         addCategoryViewController.delegate = self
+        addCategoryViewController.originatingPage = 1
         addCategoryViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addCategoryViewController, animated: true)
     }
@@ -106,6 +106,7 @@ extension HomeViewController: UITableViewDelegate {
         editButton.setImage(editImage, for: .normal)
         editButton.tintColor = UIColor.gray
         editButton.addTarget(self, action: #selector(editButtonTapped(_:)), for: .touchUpInside)
+        editButton.tag = section
         headerView.addSubview(editButton)
         
         // add deleteButton
@@ -114,6 +115,7 @@ extension HomeViewController: UITableViewDelegate {
         deleteButton.setImage(deleteImage, for: .normal)
         deleteButton.tintColor = UIColor.gray
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
+        deleteButton.tag = section
         headerView.addSubview(deleteButton)
         
         titleLabel.snp.makeConstraints { make in
@@ -140,32 +142,27 @@ extension HomeViewController: UITableViewDelegate {
     
     // Edit button
     @objc func editButtonTapped(_ sender: UIButton) {
+        sectionTag = sender.tag
         let addCategoryViewController = AddCategoryViewController()
         addCategoryViewController.delegate = self
+        addCategoryViewController.originatingPage = 2
         addCategoryViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addCategoryViewController, animated: true)
+        
     }
     
     @objc func deleteButtonTapped(_ sender: UIButton) {
-        let section = sender.tag
-        
-        // delete sectionNames's title
-        guard section < sectionNames.count else {
-            return
-        }
-        
-        let categoryName = sectionNames[section]
-        sectionNames.remove(at: section)
-
-        // delete corresponding section from snapshot
-        var currentSnapshot = dataSource.snapshot()
-        if let deletedSection = currentSnapshot.sectionIdentifiers.first(where: { $0.title == categoryName }) {
-            currentSnapshot.deleteSections([deletedSection])
-            // update snapshot
-            dataSource.apply(currentSnapshot, animatingDifferences: false)
-        }
-        
+        sectionTag = sender.tag
+        guard let sectionTag = sectionTag, sectionTag < sectionNames.count else { return }
+        // let categoryName = sectionNames[section]
+        sectionNames.remove(at: sectionTag)
+        applySnapshot()
     }
+    // if let deletedCategory = dataSource.snapshot().sectionIdentifiers.first(where: { $0.title == categoryName }) {
+    //    let deletedCategory = self.snapshot.sectionIdentifiers[section].identifier
+    //    let deletedTitle = self.snapshot.sectionIdentifiers[section].title
+    // self.snapshot.deleteSections([Category(identifier: deletedCategory, title: deletedTitle)])
+    
     // ---------------------------------------------------
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<Category, Item>(
@@ -187,32 +184,6 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     private func applySnapshot() {
-        // 創建兩個假的 Category
-        let categoriesInSection1 = [
-            Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
-            Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo"))
-        ]
-        let categoriesInSection2 = [
-            Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
-            Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo")),
-            Item(nameLabel: "Item 3", priceLabel: 20, stockLabel: 30, photo: UIImage(imageLiteralResourceName: "demo"))
-        ]
-        
-        // Apply fake data to the snapshot
-        let newSection1 = Category(title: "文具")
-        snapshot.appendSections([newSection1])
-        snapshot.appendItems(categoriesInSection1, toSection: newSection1)
-        
-        let newSection2 = Category(title: "衣物")
-        snapshot.appendSections([newSection2])
-        snapshot.appendItems(categoriesInSection2, toSection: newSection2)
-        
-        // Apply the snapshot to the dataSource
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    // ---------------------------------------------------
-    func applySnapshot2() {
-        
         // clean snapShot
         snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
         for sectionName in sectionNames {
@@ -228,15 +199,22 @@ extension HomeViewController: UITableViewDelegate {
             snapshot.appendItems(categoriesInSection1, toSection: newSection)
         }
         
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
 }
 
 extension HomeViewController: AddCategoryViewControllerDelegate {
+    func editCategoryViewControllerDidFinish(with categoryName: String) {
+        guard let sectionTag = sectionTag, sectionTag < sectionNames.count else { return }
+        sectionNames[sectionTag] = categoryName
+        applySnapshot()
+        
+    }
+    
     func addCategoryViewControllerDidFinish(with categoryName: String) {
         sectionNames.append(categoryName)
-        applySnapshot2()
+        applySnapshot()
     }
     
 }
