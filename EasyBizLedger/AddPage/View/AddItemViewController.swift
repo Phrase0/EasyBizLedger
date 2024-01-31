@@ -29,13 +29,19 @@ class AddItemViewController: UIViewController {
             rowHeight: UITableView.automaticDimension,
             separatorStyle: .none,
             allowsSelection: false,
-            registerCells: [PhotoTableViewCell.self, CategoryTableViewCell.self],
-            style: .grouped,
-            backgroundColor: .none)
+            registerCells: [
+                PhotoTableViewCell.self,
+                CategoryTableViewCell.self,
+                ItemTableViewCell.self,
+                PriceTableViewCell.self,
+                AmountTableViewCell.self],
+            style: .plain,
+            backgroundColor: .systemGray6)
     }()
     
-    var snapshot = NSDiffableDataSourceSnapshot<AddItemSection, AddItemData>()
-    var dataSource: UITableViewDiffableDataSource<AddItemSection, AddItemData>!
+    var snapshot = NSDiffableDataSourceSnapshot<AddItemSection, String>()
+    var dataSource: UITableViewDiffableDataSource<AddItemSection, String>!
+    private let showListArray = ShowList.allCases.map { $0.rawValue }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,30 +110,50 @@ class AddItemViewController: UIViewController {
 extension AddItemViewController: UITableViewDelegate {
     
     private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource<AddItemSection, AddItemData>(
+        dataSource = UITableViewDiffableDataSource<AddItemSection, String>(
             tableView: addItemTableView,
             cellProvider: { tableView, indexPath, item in
-                if indexPath.row == 0 {
+                switch indexPath.row {
+                case 0:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.identifier, for: indexPath) as? PhotoTableViewCell else {
                         return UITableViewCell()
                     }
                     return cell
-                } else if indexPath.row == 1 {
+
+                case 1:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as? CategoryTableViewCell else {
                         return UITableViewCell()
                     }
                     return cell
+
+                case 2:
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
+                        return UITableViewCell()
+                    }
+                    return cell
+
+                case 3:
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else {
+                        return UITableViewCell()
+                    }
+                    return cell
+
+                case 4:
+                    guard let cell = tableView.dequeueReusableCell(withIdentifier: AmountTableViewCell.identifier, for: indexPath) as? AmountTableViewCell else {
+                        return UITableViewCell()
+                    }
+                    return cell
+
+                default:
+                    return UITableViewCell()
                 }
-                return UITableViewCell()
             }
         )
     }
+
     
     private func applySnapshot() {
-        // clean snapShot
-        snapshot = NSDiffableDataSourceSnapshot<AddItemSection, AddItemData>()
-        snapshot.appendSections([.main])
-        
+
         let categoriesInSection1 = [
             AddItemData(categoryLabel: "類別", titleLabel: "名稱", priceLabel: 1, stockLabel: 3, photo: UIImage(imageLiteralResourceName: "demo"))
         ]
@@ -135,8 +161,10 @@ extension AddItemViewController: UITableViewDelegate {
             AddItemData(categoryLabel: "類別", titleLabel: "名稱", priceLabel: 1, stockLabel: 3, photo: UIImage(imageLiteralResourceName: "demo"))
         ]
         
-        snapshot.appendItems(categoriesInSection1)
-        snapshot.appendItems(categoriesInSection2)
+        // clean snapShot
+        snapshot = NSDiffableDataSourceSnapshot<AddItemSection, String>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(showListArray, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }

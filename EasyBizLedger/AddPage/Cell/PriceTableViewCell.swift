@@ -1,21 +1,21 @@
 //
-//  CategoryTableViewCell.swift
+//  PriceTableViewCell.swift
 //  EasyBizLedger
 //
-//  Created by Peiyun on 2024/1/30.
+//  Created by Peiyun on 2024/1/31.
 //
 
 import UIKit
 
-class CategoryTableViewCell: UITableViewCell {
+class PriceTableViewCell: UITableViewCell {
 
-    static let identifier = "\(CategoryTableViewCell.self)"
+    static let identifier = "\(PriceTableViewCell.self)"
 
-    lazy var categoryLabel: UILabel = {
+    lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.setColor(lightColor: .darkGray, darkColor: .white)
         label.font = UIFont.systemFont(ofSize: 18)
-        label.text = "Category"
+        label.text = "Price"
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,10 +32,10 @@ class CategoryTableViewCell: UITableViewCell {
         return textFieldBackgroundView
     }()
     
-    lazy var categoryTextField = {
+    lazy var priceTextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        textField.keyboardType = .default
+        textField.keyboardType = .numberPad
         return textField
     }()
 
@@ -43,13 +43,13 @@ class CategoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCellUI()
-        categoryLabel.sizeToFit()
+        priceLabel.sizeToFit()
         textFieldBackgroundView.sizeToFit()
-        categoryTextField.sizeToFit()
+        priceTextField.sizeToFit()
     }
     
     override func prepareForReuse() {
-        categoryTextField.text = nil
+        priceTextField.text = nil
     }
     
     required init?(coder: NSCoder) {
@@ -59,25 +59,25 @@ class CategoryTableViewCell: UITableViewCell {
     // MARK: - Auto layout
     private func setupCellUI() {
         contentView.backgroundColor = .systemGray6
-        contentView.addSubview(categoryLabel)
+        contentView.addSubview(priceLabel)
         contentView.addSubview(textFieldBackgroundView)
-        textFieldBackgroundView.addSubview(categoryTextField)
+        textFieldBackgroundView.addSubview(priceTextField)
         
-        categoryLabel.snp.makeConstraints { make in
+        priceLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(45)
             make.centerY.equalTo(textFieldBackgroundView)
         }
         
         textFieldBackgroundView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(5)
-            make.leading.equalTo(categoryLabel.snp.trailing).offset(15)
+            make.leading.equalTo(priceLabel.snp.trailing).offset(15)
             make.trailing.equalToSuperview().offset(-45)
             make.bottom.equalToSuperview().offset(-20)
             make.height.equalTo(40).priority(999)
             make.width.equalTo(190)
         }
         
-        categoryTextField.snp.makeConstraints { make in
+        priceTextField.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
     }

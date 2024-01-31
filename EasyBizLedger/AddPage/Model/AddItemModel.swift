@@ -29,3 +29,10 @@ struct AddItemData: Hashable {
     }
 }
 
+enum ShowList: String, CaseIterable {
+    case photo
+    case category
+    case item
+    case price
+    case amount
+}

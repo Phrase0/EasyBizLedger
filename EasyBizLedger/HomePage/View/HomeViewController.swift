@@ -100,7 +100,7 @@ extension HomeViewController: UITableViewDelegate {
         // add titleLabel
         let titleLabel = UILabel()
         titleLabel.text = category.title
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.setColor(lightColor: .darkGray, darkColor: .white)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         headerView.addSubview(titleLabel)
         

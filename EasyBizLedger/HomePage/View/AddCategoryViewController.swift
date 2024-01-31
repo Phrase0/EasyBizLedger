@@ -33,7 +33,7 @@ class AddCategoryViewController: UIViewController {
             doneBackgroundColor: UIColor.lightGray,
             cancelBackgroundColor: UIColor.lightGray,
             categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel", comment: ""),
-            categoryTitleColor: UIColor.black)
+            categoryTitleColor: UIColor.setColor(lightColor: .darkGray, darkColor: .white))
     }()
     
     weak var delegate: AddCategoryViewControllerDelegate?
@@ -85,14 +85,16 @@ class AddCategoryViewController: UIViewController {
         // textFieldBackgroundView
         view.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.layer.cornerRadius = 10
-        textFieldBackgroundView.backgroundColor = .white
-        textFieldBackgroundView.layer.shadowColor = UIColor.black.cgColor
+        textFieldBackgroundView.backgroundColor = UIColor.setColor(lightColor: .white, darkColor: .lightGray)
+        textFieldBackgroundView.layer.shadowColor = UIColor.setColor(lightColor: .black, darkColor: .white).cgColor
         textFieldBackgroundView.layer.shadowOpacity = 0.2
         textFieldBackgroundView.layer.shadowOffset = CGSize(width: 2, height: 2)
         textFieldBackgroundView.layer.shadowRadius = 4
         
         // categoryTitleLabel
         categoryTitleLabel.text = addCategoryViewModel.categoryTitleLabel
+            categoryTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            categoryTitleLabel.textColor = addCategoryViewModel.categoryTitleColor
         view.addSubview(categoryTitleLabel)
         
         // categoryTextField
@@ -102,8 +104,6 @@ class AddCategoryViewController: UIViewController {
     }
     
     private func setupAutolayout() {
-        categoryTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        categoryTitleLabel.textColor = addCategoryViewModel.categoryTitleColor
         categoryTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.snp_topMargin).offset(30)
             make.leading.equalToSuperview().offset(20)
