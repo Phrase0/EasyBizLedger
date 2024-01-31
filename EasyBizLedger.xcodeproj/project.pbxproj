@@ -16,6 +16,11 @@
 		F8C8EEE62B6119ED003449F5 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE52B6119ED003449F5 /* HomeTableViewCell.swift */; };
 		F8C8EEE82B650AD6003449F5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */; };
 		F8C8EEEB2B650B2F003449F5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */; };
+		F8C8EF4A2B69FEEB003449F5 /* AddItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF422B69FEEB003449F5 /* AddItemViewModel.swift */; };
+		F8C8EF4B2B69FEEB003449F5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF442B69FEEB003449F5 /* CategoryTableViewCell.swift */; };
+		F8C8EF4C2B69FEEB003449F5 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF452B69FEEB003449F5 /* PhotoTableViewCell.swift */; };
+		F8C8EF4D2B69FEEB003449F5 /* AddItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF472B69FEEB003449F5 /* AddItemModel.swift */; };
+		F8C8EF4E2B69FEEB003449F5 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF492B69FEEB003449F5 /* AddItemViewController.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
@@ -44,6 +49,11 @@
 		F8C8EEE52B6119ED003449F5 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		F8C8EF422B69FEEB003449F5 /* AddItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewModel.swift; sourceTree = "<group>"; };
+		F8C8EF442B69FEEB003449F5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF452B69FEEB003449F5 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF472B69FEEB003449F5 /* AddItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemModel.swift; sourceTree = "<group>"; };
+		F8C8EF492B69FEEB003449F5 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +157,50 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		F8C8EF402B69FEEB003449F5 /* AddPage */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF412B69FEEB003449F5 /* ViewModel */,
+				F8C8EF432B69FEEB003449F5 /* Cell */,
+				F8C8EF462B69FEEB003449F5 /* Model */,
+				F8C8EF482B69FEEB003449F5 /* View */,
+			);
+			path = AddPage;
+			sourceTree = "<group>";
+		};
+		F8C8EF412B69FEEB003449F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF422B69FEEB003449F5 /* AddItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F8C8EF432B69FEEB003449F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF442B69FEEB003449F5 /* CategoryTableViewCell.swift */,
+				F8C8EF452B69FEEB003449F5 /* PhotoTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F8C8EF462B69FEEB003449F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF472B69FEEB003449F5 /* AddItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8C8EF482B69FEEB003449F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF492B69FEEB003449F5 /* AddItemViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +229,7 @@
 				F8D888982B39B38100C1E482 /* View */,
 				F8D8889B2B39E4E000C1E482 /* Extension */,
 				F8C8EEDB2B4AAE0A003449F5 /* HomePage */,
+				F8C8EF402B69FEEB003449F5 /* AddPage */,
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
@@ -366,12 +421,15 @@
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
 				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
 				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
+				F8C8EF4A2B69FEEB003449F5 /* AddItemViewModel.swift in Sources */,
 				F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */,
 				F8C8EEEB2B650B2F003449F5 /* UITableViewCell+Extension.swift in Sources */,
 				F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */,
+				F8C8EF4C2B69FEEB003449F5 /* PhotoTableViewCell.swift in Sources */,
 				F8C8EEE62B6119ED003449F5 /* HomeTableViewCell.swift in Sources */,
 				F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */,
 				F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */,
+				F8C8EF4E2B69FEEB003449F5 /* AddItemViewController.swift in Sources */,
 				F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */,
 				F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */,
 				F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */,
@@ -379,6 +437,8 @@
 				F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */,
 				F8C8EEE82B650AD6003449F5 /* CustomTableView.swift in Sources */,
 				F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */,
+				F8C8EF4D2B69FEEB003449F5 /* AddItemModel.swift in Sources */,
+				F8C8EF4B2B69FEEB003449F5 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
