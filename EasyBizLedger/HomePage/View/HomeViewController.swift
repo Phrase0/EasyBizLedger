@@ -23,14 +23,18 @@ class HomeViewController: UIViewController {
         return  CustomTableView(
             rowHeight: UITableView.automaticDimension,
             separatorStyle: .singleLine,
-            allowsSelection: true,
-            registerCells: [HomeTableViewCell.self])
+            allowsSelection: false,
+            registerCells: [HomeTableViewCell.self],
+            style: .insetGrouped,
+            backgroundColor: .systemGray6)
     }()
     
     var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
     var dataSource: UITableViewDiffableDataSource<Category, Item>!
-    var sectionNames:[String] = []
-    var sectionTag:Int?
+    
+    static var sectionNames:[String] = []
+    var sectionTag: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,7 +133,7 @@ extension HomeViewController: UITableViewDelegate {
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-15)
+            make.trailing.equalToSuperview().offset(-10)
             make.centerY.equalToSuperview()
         }
         
@@ -143,26 +147,47 @@ extension HomeViewController: UITableViewDelegate {
     // Edit button
     @objc func editButtonTapped(_ sender: UIButton) {
         sectionTag = sender.tag
+        guard let sectionTag = sectionTag, sectionTag < HomeViewController.sectionNames.count else { return }
         let addCategoryViewController = AddCategoryViewController()
         addCategoryViewController.delegate = self
         addCategoryViewController.originatingPage = 2
+        addCategoryViewController.originCategoryName = HomeViewController.sectionNames[sectionTag]
         addCategoryViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addCategoryViewController, animated: true)
         
     }
     
+    // delete Button
     @objc func deleteButtonTapped(_ sender: UIButton) {
         sectionTag = sender.tag
-        guard let sectionTag = sectionTag, sectionTag < sectionNames.count else { return }
-        // let categoryName = sectionNames[section]
-        sectionNames.remove(at: sectionTag)
-        applySnapshot()
+        print("delete:\(sectionTag)")
+        guard let sectionTag = sectionTag, sectionTag < HomeViewController.sectionNames.count else { return }
+
+        let sectionName = HomeViewController.sectionNames[sectionTag]
+        // add alert
+        let alertController = UIAlertController(
+            title: "Warning",
+            message: "Are you sure to delete?",
+            preferredStyle: .alert
+        )
+
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        let deleteAction = UIAlertAction(title: "delete", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            // delete section
+            HomeViewController.sectionNames.remove(at: sectionTag)
+            
+            self.applySnapshot()
+        }
+        alertController.addAction(deleteAction)
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
-    // if let deletedCategory = dataSource.snapshot().sectionIdentifiers.first(where: { $0.title == categoryName }) {
-    //    let deletedCategory = self.snapshot.sectionIdentifiers[section].identifier
-    //    let deletedTitle = self.snapshot.sectionIdentifiers[section].title
-    // self.snapshot.deleteSections([Category(identifier: deletedCategory, title: deletedTitle)])
-    
     // ---------------------------------------------------
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<Category, Item>(
@@ -177,7 +202,6 @@ extension HomeViewController: UITableViewDelegate {
                 cell.stockLabel.text = "Stock: \(category.stockLabel)"
                 cell.photoImageView.image = category.photo
                 cell.contentView.backgroundColor = .baseBackgroundColor
-                cell.selectionStyle = .none
                 return cell
             }
         )
@@ -186,13 +210,13 @@ extension HomeViewController: UITableViewDelegate {
     private func applySnapshot() {
         // clean snapShot
         snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-        for sectionName in sectionNames {
+        for sectionName in HomeViewController.sectionNames {
             let newSection = Category(title: sectionName)
             // 為每個 sectionName 增加 section
             snapshot.appendSections([newSection])
             
             let categoriesInSection1 = [
-                Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 20, photo: UIImage(imageLiteralResourceName: "demo")),
+                Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 10, photo: UIImage(imageLiteralResourceName: "demo")),
                 Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo"))
             ]
             
@@ -202,18 +226,19 @@ extension HomeViewController: UITableViewDelegate {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
+  
 }
 
 extension HomeViewController: AddCategoryViewControllerDelegate {
     func editCategoryViewControllerDidFinish(with categoryName: String) {
-        guard let sectionTag = sectionTag, sectionTag < sectionNames.count else { return }
-        sectionNames[sectionTag] = categoryName
+        guard let sectionTag = sectionTag, sectionTag < HomeViewController.sectionNames.count else { return }
+        HomeViewController.sectionNames[sectionTag] = categoryName
         applySnapshot()
         
     }
     
     func addCategoryViewControllerDidFinish(with categoryName: String) {
-        sectionNames.append(categoryName)
+        HomeViewController.sectionNames.append(categoryName)
         applySnapshot()
     }
     

@@ -28,7 +28,6 @@
 		F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */; };
 		F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */; };
 		F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A02B39E60200C1E482 /* HomeViewController.swift */; };
-		F8D888A32B39E65E00C1E482 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A22B39E65E00C1E482 /* AddViewController.swift */; };
 		F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A42B39E6D400C1E482 /* ListViewController.swift */; };
 		F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,6 @@
 		F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		F8D888A02B39E60200C1E482 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		F8D888A22B39E65E00C1E482 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F8D888A42B39E6D400C1E482 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,22 +147,6 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
-		F8C8EEEC2B669F79003449F5 /* AddPage */ = {
-			isa = PBXGroup;
-			children = (
-				F8C8EEED2B66A1BE003449F5 /* View */,
-			);
-			path = AddPage;
-			sourceTree = "<group>";
-		};
-		F8C8EEED2B66A1BE003449F5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F8D888A22B39E65E00C1E482 /* AddViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +175,6 @@
 				F8D888982B39B38100C1E482 /* View */,
 				F8D8889B2B39E4E000C1E482 /* Extension */,
 				F8C8EEDB2B4AAE0A003449F5 /* HomePage */,
-				F8C8EEEC2B669F79003449F5 /* AddPage */,
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
@@ -385,7 +366,6 @@
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
 				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
 				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
-				F8D888A32B39E65E00C1E482 /* AddViewController.swift in Sources */,
 				F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */,
 				F8C8EEEB2B650B2F003449F5 /* UITableViewCell+Extension.swift in Sources */,
 				F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */,

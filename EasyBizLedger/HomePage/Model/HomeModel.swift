@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct HomeModel {
-    
-}
-
 struct Category: Hashable {
     let identifier: UUID
     var title: String

@@ -12,7 +12,7 @@ extension UINavigationController {
         return addNavigationController(for: HomeViewController(), title: "home")
     }
     static var add: UINavigationController {
-        return addNavigationController(for: AddViewController(), title: "add")
+        return addNavigationController(for: AddItemViewController(), title: "add")
     }
     static var list: UINavigationController {
         return addNavigationController(for: ListViewController(), title: "list")

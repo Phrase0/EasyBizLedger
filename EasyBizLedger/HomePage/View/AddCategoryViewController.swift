@@ -22,6 +22,7 @@ class AddCategoryViewController: UIViewController {
     private var categoryTextField = UITextField()
     
     var originatingPage: Int?
+    var originCategoryName: String?
     
     private var addCategoryViewModel: AddCategoryViewModel = {
         return AddCategoryViewModel(
@@ -95,6 +96,7 @@ class AddCategoryViewController: UIViewController {
         view.addSubview(categoryTitleLabel)
         
         // categoryTextField
+        categoryTextField.text = originCategoryName
         textFieldBackgroundView.addSubview(categoryTextField)
         
     }
@@ -124,9 +126,22 @@ class AddCategoryViewController: UIViewController {
         guard let categoryName = categoryTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !categoryName.isEmpty else {
             showAlert(message: "Please enter a valid category name")
             return }
+        
+        // if categoryName = originCategoryName, go back
+        if categoryName == originCategoryName {
+            navigationController?.popViewController(animated: true)
+            return
+        }
+
+        // check repeat category name
+        if HomeViewController.sectionNames.contains(categoryName) {
+            showAlert(message: "This category name already exists.")
+            return
+        }
+        
         if originatingPage == 1 {
             delegate?.addCategoryViewControllerDidFinish(with: categoryName)
-        } else {
+        } else if originatingPage == 2 {
             delegate?.editCategoryViewControllerDidFinish(with: categoryName)
         }
         navigationController?.popViewController(animated: true)
@@ -139,6 +154,9 @@ class AddCategoryViewController: UIViewController {
     private func showAlert(message: String) {
         let alertController = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }

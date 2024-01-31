@@ -13,16 +13,18 @@ class CustomTableView: UITableView {
         rowHeight: CGFloat,
         separatorStyle: UITableViewCell.SeparatorStyle,
         allowsSelection: Bool,
-        registerCells: [UITableViewCell.Type]
+        registerCells: [UITableViewCell.Type],
+        style: UITableView.Style,
+        backgroundColor: UIColor?
     ) {
-        super.init(frame: .zero, style: .insetGrouped)
+        super.init(frame: .zero, style: style)
         self.rowHeight = rowHeight
         self.separatorStyle = separatorStyle
         self.allowsSelection = allowsSelection
         for cellClass in registerCells {
             self.registerCell(cellClass)
         }
-        // self.backgroundColor = .systemGray5
+        self.backgroundColor = backgroundColor
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

@@ -86,6 +86,28 @@ class HomeTableViewCell: UITableViewCell {
         return numberTextField
     }()
     
+    // add editButton
+    lazy var editButton = {
+        let editButton = UIButton()
+        let editImage = UIImage(systemName: "square.and.pencil")
+        editButton.setImage(editImage, for: .normal)
+        editButton.tintColor = UIColor.gray
+        editButton.addTarget(self, action: #selector(editButtonTapped(_:)), for: .touchUpInside)
+        editButton.imageView?.contentMode = .scaleAspectFit
+        return editButton
+    }()
+    
+    lazy var deleteButton = {
+        // add deleteButton
+        let deleteButton = UIButton()
+        let deleteImage = UIImage(systemName: "trash")
+        deleteButton.setImage(deleteImage, for: .normal)
+        deleteButton.tintColor = UIColor.gray
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
+        editButton.imageView?.contentMode = .scaleAspectFit
+        return deleteButton
+    }()
+    
     // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -96,6 +118,8 @@ class HomeTableViewCell: UITableViewCell {
         photoImageView.sizeToFit()
         addButton.sizeToFit()
         subButton.sizeToFit()
+        editButton.sizeToFit()
+        deleteButton.sizeToFit()
     }
     
     override func prepareForReuse() {
@@ -111,8 +135,8 @@ class HomeTableViewCell: UITableViewCell {
     
     // MARK: - Auto layout
     private func setupCellUI() {
+        contentView.backgroundColor = .baseBackgroundColor
         
-        contentView.backgroundColor = UIColor.setColor(lightColor: .systemGray6, darkColor: .black)
         contentView.addSubview(nameLabel)
         contentView.addSubview(priceLabel)
         contentView.addSubview(stockLabel)
@@ -121,6 +145,8 @@ class HomeTableViewCell: UITableViewCell {
         contentView.addSubview(subButton)
         contentView.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.addSubview(numberTextField)
+        contentView.addSubview(editButton)
+        contentView.addSubview(deleteButton)
         
         photoImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(15)
@@ -132,19 +158,32 @@ class HomeTableViewCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(15)
             make.leading.equalTo(photoImageView.snp_trailingMargin).offset(15)
-            make.trailing.equalToSuperview().offset(-15)
         }
+        
+        editButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.leading.equalTo(nameLabel.snp_trailingMargin).offset(20)
+            make.trailing.lessThanOrEqualTo(deleteButton.snp_leadingMargin).offset(-10)
+            make.height.equalTo(20)
+        }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().offset(-15)
+            make.height.equalTo(20)
+        }
+        
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp_bottomMargin).offset(15)
             make.leading.equalTo(photoImageView.snp_trailingMargin).offset(15)
-            make.trailing.equalToSuperview().offset(-15)
+            make.trailing.equalToSuperview().offset(-100)
         }
         
         stockLabel.snp.makeConstraints { make in
             make.top.equalTo(priceLabel.snp_bottomMargin).offset(15)
             make.leading.equalTo(photoImageView.snp_trailingMargin).offset(15)
             make.bottom.equalToSuperview().offset(-15)
-            make.trailing.equalToSuperview().offset(-15)
+            make.trailing.equalToSuperview().offset(-100)
         }
         
         addButton.snp.makeConstraints { make in
@@ -169,11 +208,22 @@ class HomeTableViewCell: UITableViewCell {
         numberTextField.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
+        
+        
     }
     
     @objc private func addButtonTapped() {
     }
     
     @objc private func subButtonTapped() {
+    }
+    
+    // Edit button
+    @objc func editButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    // delete Button
+    @objc func deleteButtonTapped(_ sender: UIButton) {
     }
 }
