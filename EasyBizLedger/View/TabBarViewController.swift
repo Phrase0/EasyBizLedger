@@ -70,9 +70,9 @@ extension TabBarViewController {
             case .home:
                 return .systemAsset(.house)
             case .add:
-                return .systemAsset(.magnifyingglass)
+                return UIImage(systemName: "plus.square")
             case .list:
-                return  .systemAsset(.heart)
+                return UIImage(systemName: "chart.bar")
             }
         }
         private var selectedImage: UIImage? {
@@ -80,9 +80,9 @@ extension TabBarViewController {
             case .home:
                 return .systemAsset(.selectedHouse)
             case .add:
-                return .systemAsset(.magnifyingglass)
+                return UIImage(systemName: "plus.square.fill")
             case .list:
-                return .systemAsset(.selectedHeart)
+                return UIImage(systemName: "chart.bar.fill")
             }
         }
     }
