@@ -14,7 +14,7 @@ class ItemTableViewCell: UITableViewCell {
     lazy var itemLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.setColor(lightColor: .darkGray, darkColor: .white)
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.text = "Item"
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ class ItemTableViewCell: UITableViewCell {
     
     // MARK: - Auto layout
     private func setupCellUI() {
-        contentView.backgroundColor = .systemGray6
+        //contentView.backgroundColor = .systemGray6
         contentView.addSubview(itemLabel)
         contentView.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.addSubview(itemTextField)
@@ -69,12 +69,11 @@ class ItemTableViewCell: UITableViewCell {
         }
         
         textFieldBackgroundView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(5)
             make.leading.equalTo(itemLabel.snp.trailing).offset(15)
             make.trailing.equalToSuperview().offset(-45)
-            make.bottom.equalToSuperview().offset(-20)
-            make.height.equalTo(40).priority(999)
-            make.width.equalTo(190)
+            make.top.bottom.equalToSuperview().inset(10)
+            make.height.equalTo(30)
+            make.width.equalTo(200)
         }
         
         itemTextField.snp.makeConstraints { make in

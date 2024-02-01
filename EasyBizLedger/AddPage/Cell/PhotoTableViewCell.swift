@@ -38,7 +38,7 @@ class PhotoTableViewCell: UITableViewCell {
     // MARK: - Auto layout
     private func setupCellUI() {
         contentView.addSubview(photoImageView)
-        contentView.backgroundColor = .systemGray6
+        //contentView.backgroundColor = .systemGray6
         photoImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(45)

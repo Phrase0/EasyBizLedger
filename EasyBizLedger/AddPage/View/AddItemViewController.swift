@@ -36,7 +36,7 @@ class AddItemViewController: UIViewController {
                 PriceTableViewCell.self,
                 AmountTableViewCell.self],
             style: .plain,
-            backgroundColor: .systemGray6)
+            backgroundColor: .none)
     }()
     
     var snapshot = NSDiffableDataSourceSnapshot<AddItemSection, String>()
@@ -107,6 +107,8 @@ class AddItemViewController: UIViewController {
     }
 }
 
+
+// MARK: - UITableViewDelegate
 extension AddItemViewController: UITableViewDelegate {
     
     private func configureDataSource() {
@@ -150,17 +152,8 @@ extension AddItemViewController: UITableViewDelegate {
             }
         )
     }
-
-    
+  
     private func applySnapshot() {
-
-        let categoriesInSection1 = [
-            AddItemData(categoryLabel: "類別", titleLabel: "名稱", priceLabel: 1, stockLabel: 3, photo: UIImage(imageLiteralResourceName: "demo"))
-        ]
-        let categoriesInSection2 = [
-            AddItemData(categoryLabel: "類別", titleLabel: "名稱", priceLabel: 1, stockLabel: 3, photo: UIImage(imageLiteralResourceName: "demo"))
-        ]
-        
         // clean snapShot
         snapshot = NSDiffableDataSourceSnapshot<AddItemSection, String>()
         snapshot.appendSections([.main])

@@ -14,7 +14,7 @@ class PriceTableViewCell: UITableViewCell {
     lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.setColor(lightColor: .darkGray, darkColor: .white)
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.text = "Price"
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ class PriceTableViewCell: UITableViewCell {
     
     // MARK: - Auto layout
     private func setupCellUI() {
-        contentView.backgroundColor = .systemGray6
+        //contentView.backgroundColor = .systemGray6
         contentView.addSubview(priceLabel)
         contentView.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.addSubview(priceTextField)
@@ -69,12 +69,11 @@ class PriceTableViewCell: UITableViewCell {
         }
         
         textFieldBackgroundView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(5)
             make.leading.equalTo(priceLabel.snp.trailing).offset(15)
             make.trailing.equalToSuperview().offset(-45)
-            make.bottom.equalToSuperview().offset(-20)
-            make.height.equalTo(40).priority(999)
-            make.width.equalTo(190)
+            make.top.bottom.equalToSuperview().inset(10)
+            make.height.equalTo(30)
+            make.width.equalTo(200)
         }
         
         priceTextField.snp.makeConstraints { make in

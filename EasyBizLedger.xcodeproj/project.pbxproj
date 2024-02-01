@@ -24,6 +24,8 @@
 		F8C8EF502B6A0090003449F5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */; };
 		F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */; };
 		F8C8EF542B6A00FD003449F5 /* AmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */; };
+		F8C8EF572B6A5885003449F5 /* SectionStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF562B6A5885003449F5 /* SectionStorageManager.swift */; };
+		F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
@@ -60,6 +62,8 @@
 		F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF562B6A5885003449F5 /* SectionStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionStorageManager.swift; sourceTree = "<group>"; };
+		F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +214,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F8C8EF552B6A5350003449F5 /* Local Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */,
+			);
+			path = "Local Storage";
+			sourceTree = "<group>";
+		};
+		F8C8EF582B6B6DD4003449F5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */,
+				F8C8EF562B6A5885003449F5 /* SectionStorageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +256,8 @@
 				F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */,
 				F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */,
 				F8C8EEE92B650AE6003449F5 /* Custom */,
+				F8C8EF552B6A5350003449F5 /* Local Storage */,
+				F8C8EF582B6B6DD4003449F5 /* Managers */,
 				F8D888982B39B38100C1E482 /* View */,
 				F8D8889B2B39E4E000C1E482 /* Extension */,
 				F8C8EEDB2B4AAE0A003449F5 /* HomePage */,
@@ -243,7 +266,6 @@
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
 				F8D888822B371C8700C1E482 /* GoogleService-Info.plist */,
-				F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */,
 				F8D888902B3749BB00C1E482 /* Localizable.strings */,
 				F8D888962B374A9A00C1E482 /* InfoPlist.strings */,
 			);
@@ -429,6 +451,7 @@
 			files = (
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
 				F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */,
+				F8C8EF572B6A5885003449F5 /* SectionStorageManager.swift in Sources */,
 				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
 				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
 				F8C8EF4A2B69FEEB003449F5 /* AddItemViewModel.swift in Sources */,
@@ -446,6 +469,7 @@
 				F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */,
 				F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */,
 				F8C8EEE82B650AD6003449F5 /* CustomTableView.swift in Sources */,
+				F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */,
 				F8C8EF542B6A00FD003449F5 /* AmountTableViewCell.swift in Sources */,
 				F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */,
 				F8C8EF4D2B69FEEB003449F5 /* AddItemModel.swift in Sources */,
