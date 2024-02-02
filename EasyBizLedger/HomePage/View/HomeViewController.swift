@@ -166,9 +166,9 @@ extension HomeViewController: UITableViewDelegate {
     
     // delete Button
     @objc func deleteButtonTapped(_ sender: UIButton) {
-        self.sectionTag = sender.tag
+        let sectionTag = sender.tag
         print(sectionTag)
-        guard var sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
+        guard sectionTag < lsCategorys.count else { return }
         let categoryToDelete = lsCategorys[sectionTag]
         
         // add alert
@@ -187,9 +187,9 @@ extension HomeViewController: UITableViewDelegate {
             LocalStorageManager.shared.deleteCategory(categoryToDelete) { [weak self] result in
                 switch result {
                 case .success:
-                    //self?.lsCategorys.remove(at: sectionTag)
-                    self?.fetchCategoryNamesAndUpdateSnapshot()
-                    print("Success")
+                    guard var snapshot = self?.dataSource?.snapshot() else {return}
+                    snapshot.deleteSections([categoryToDelete])
+                    self?.dataSource?.apply(snapshot, animatingDifferences: false)
                 case .failure(let error):
                     print("Failed to delete category: \(error)")
                 }
@@ -203,11 +203,6 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
     
-    // ---------------------------------------------------
-
-
-
-    // ---------------------------------------------------
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<LSCategory, LSItem>(
             tableView: homeTableView,
@@ -240,7 +235,7 @@ extension HomeViewController: UITableViewDelegate {
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)
-       
+        
     }
 }
 
