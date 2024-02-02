@@ -10,9 +10,9 @@ import CoreData
 typealias LSCategoryResults = (Result<[LSCategory]>) -> Void
 typealias LSCategoryResult = (Result<LSCategory>) -> Void
 
-@objc class StorageManager: NSObject {
+@objc class LocalStorageManager: NSObject {
  
-    static let shared = StorageManager()
+    static let shared = LocalStorageManager()
     
     private enum Entity: String, CaseIterable {
         case LSCategory

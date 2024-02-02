@@ -24,7 +24,7 @@
 		F8C8EF502B6A0090003449F5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */; };
 		F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */; };
 		F8C8EF542B6A00FD003449F5 /* AmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */; };
-		F8C8EF572B6A5885003449F5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF562B6A5885003449F5 /* StorageManager.swift */; };
+		F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */; };
 		F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
@@ -62,7 +62,7 @@
 		F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewCell.swift; sourceTree = "<group>"; };
-		F8C8EF562B6A5885003449F5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */,
-				F8C8EF562B6A5885003449F5 /* StorageManager.swift */,
+				F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -451,7 +451,7 @@
 			files = (
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
 				F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */,
-				F8C8EF572B6A5885003449F5 /* StorageManager.swift in Sources */,
+				F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */,
 				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
 				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
 				F8C8EF4A2B69FEEB003449F5 /* AddItemViewModel.swift in Sources */,

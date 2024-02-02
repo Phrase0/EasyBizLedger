@@ -13,15 +13,16 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
-        self.tabBar.tintColor = .orange
-        viewControllers = tabs.map { $0.makeViewController() }
-        let barAppearance =  UITabBarAppearance()
-        barAppearance.configureWithDefaultBackground()
-        UITabBar.appearance().scrollEdgeAppearance = barAppearance
-        
         // load core data
-        StorageManager.shared.fetchCategorys()
+        LocalStorageManager.shared.fetchCategorys { _ in
+            // Set up tab bar controller when data is loaded
+            viewControllers = tabs.map { $0.makeViewController() }
+            let barAppearance =  UITabBarAppearance()
+            barAppearance.configureWithDefaultBackground()
+            UITabBar.appearance().scrollEdgeAppearance = barAppearance
+        }
+        self.delegate = self
+        self.tabBar.tintColor = .orange  
     }
 
     /*

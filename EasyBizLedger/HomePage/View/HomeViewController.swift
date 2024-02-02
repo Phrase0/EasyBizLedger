@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
         return  CustomTableView(
             rowHeight: UITableView.automaticDimension,
             separatorStyle: .singleLine,
-            allowsSelection: false,
+            allowsSelection: true,
             registerCells: [HomeTableViewCell.self],
             style: .insetGrouped,
             backgroundColor: .systemGray6)
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     var snapshot = NSDiffableDataSourceSnapshot<LSCategory, LSItem>()
     var dataSource: UITableViewDiffableDataSource<LSCategory, LSItem>!
     
-    var lsCategorys = StorageManager.shared.categorys
+    var lsCategorys = LocalStorageManager.shared.categorys
     var sectionTag: Int?
     
     override func viewDidLoad() {
@@ -43,6 +43,10 @@ class HomeViewController: UIViewController {
         setupUI()
         configureDataSource()
         applySnapshot()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,7 +99,7 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        
+        print("Selected section header: \(section)")
         let category = snapshot.sectionIdentifiers[section]
         // add titleLabel
         let titleLabel = UILabel()
@@ -162,9 +166,10 @@ extension HomeViewController: UITableViewDelegate {
     
     // delete Button
     @objc func deleteButtonTapped(_ sender: UIButton) {
-        sectionTag = sender.tag
+        self.sectionTag = sender.tag
+        print(sectionTag)
         guard var sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
-        let categoryToDelete = lsCategorys[sender.tag]
+        let categoryToDelete = lsCategorys[sectionTag]
         
         // add alert
         let alertController = UIAlertController(
@@ -179,10 +184,12 @@ extension HomeViewController: UITableViewDelegate {
         let deleteAction = UIAlertAction(title: "delete", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             // delete section
-            StorageManager.shared.deleteCategory(categoryToDelete) { [weak self] result in
+            LocalStorageManager.shared.deleteCategory(categoryToDelete) { [weak self] result in
                 switch result {
                 case .success:
+                    //self?.lsCategorys.remove(at: sectionTag)
                     self?.fetchCategoryNamesAndUpdateSnapshot()
+                    print("Success")
                 case .failure(let error):
                     print("Failed to delete category: \(error)")
                 }
@@ -195,6 +202,11 @@ extension HomeViewController: UITableViewDelegate {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    // ---------------------------------------------------
+
+
+
     // ---------------------------------------------------
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<LSCategory, LSItem>(
@@ -228,6 +240,7 @@ extension HomeViewController: UITableViewDelegate {
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)
+       
     }
 }
 
@@ -241,7 +254,7 @@ extension HomeViewController: AddCategoryViewControllerDelegate {
         lsCategory.title = categoryName
         
         // 保存更新
-        StorageManager.shared.save { [weak self] result in
+        LocalStorageManager.shared.save { [weak self] result in
             switch result {
             case .success:
                 self?.fetchCategoryNamesAndUpdateSnapshot()
@@ -253,7 +266,7 @@ extension HomeViewController: AddCategoryViewControllerDelegate {
     
     func addCategoryViewControllerDidFinish(with categoryName: String) {
         // store new one into Core Data
-        StorageManager.shared.saveCategory(title: categoryName) { [weak self] result in
+        LocalStorageManager.shared.saveCategory(title: categoryName) { [weak self] result in
             switch result {
             case .success:
                 // update categorys array
@@ -266,7 +279,7 @@ extension HomeViewController: AddCategoryViewControllerDelegate {
     
     private func fetchCategoryNamesAndUpdateSnapshot() {
         // get Core Data from new data
-        StorageManager.shared.fetchCategorys { [weak self] result in
+        LocalStorageManager.shared.fetchCategorys { [weak self] result in
             switch result {
             case .success(let categorys):
                 // update categorys array
