@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     var snapshot = NSDiffableDataSourceSnapshot<LSCategory, LSItem>()
     var dataSource: UITableViewDiffableDataSource<LSCategory, LSItem>!
     
-    // static var sectionNames:[String] = []
+    var lsCategorys = StorageManager.shared.categorys
     var sectionTag: Int?
     
     override func viewDidLoad() {
@@ -43,8 +43,6 @@ class HomeViewController: UIViewController {
         setupUI()
         configureDataSource()
         applySnapshot()
-        
-        SectionStorageManager.shared.fetchCategoryNames()
     }
     
     override func viewDidLayoutSubviews() {
@@ -149,13 +147,13 @@ extension HomeViewController: UITableViewDelegate {
     // Edit button
     @objc func editButtonTapped(_ sender: UIButton) {
         sectionTag = sender.tag
-        guard let sectionTag = sectionTag, sectionTag < SectionStorageManager.shared.categorys.count else { return }
+        guard let sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
         
         let addCategoryViewController = AddCategoryViewController()
         addCategoryViewController.delegate = self
         addCategoryViewController.originatingPage = 2
         
-        let selectedCategoryTitle = SectionStorageManager.shared.categorys[sectionTag].title
+        let selectedCategoryTitle = lsCategorys[sectionTag].title
         addCategoryViewController.originCategoryName = selectedCategoryTitle
         
         addCategoryViewController.hidesBottomBarWhenPushed = true
@@ -165,27 +163,33 @@ extension HomeViewController: UITableViewDelegate {
     // delete Button
     @objc func deleteButtonTapped(_ sender: UIButton) {
         sectionTag = sender.tag
-        guard let sectionTag = sectionTag, sectionTag < SectionStorageManager.shared.categorys.count else { return }
-
+        guard var sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
+        let categoryToDelete = lsCategorys[sender.tag]
+        
         // add alert
         let alertController = UIAlertController(
             title: "Warning",
             message: "Are you sure to delete?",
             preferredStyle: .alert
         )
-
+        
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-
+        
         let deleteAction = UIAlertAction(title: "delete", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             // delete section
-            // HomeViewController.sectionNames.remove(at: sectionTag)
-            
-            self.applySnapshot()
+            StorageManager.shared.deleteCategory(categoryToDelete) { [weak self] result in
+                switch result {
+                case .success:
+                    self?.fetchCategoryNamesAndUpdateSnapshot()
+                case .failure(let error):
+                    print("Failed to delete category: \(error)")
+                }
+            }
         }
         alertController.addAction(deleteAction)
-
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.present(alertController, animated: true, completion: nil)
@@ -214,14 +218,13 @@ extension HomeViewController: UITableViewDelegate {
         // clean snapShot
         snapshot = NSDiffableDataSourceSnapshot<LSCategory, LSItem>()
         
-        for category in SectionStorageManager.shared.categorys {
+        for category in lsCategorys {
             
             // add section
             snapshot.appendSections([category])
             
-//            let itemsInSection = category.items?.allObjects as? [LSItem] ?? []
-//            snapshot.appendItems(itemsInSection, toSection: category)
-            // snapshot.appendItems(categoriesInSection1, toSection: newSection)
+            let itemsInSection = category.lSItems?.allObjects as? [LSItem] ?? []
+            snapshot.appendItems(itemsInSection, toSection: category)
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -232,13 +235,13 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: AddCategoryViewControllerDelegate {
     
     func editCategoryViewControllerDidFinish(with categoryName: String) {
-        guard let sectionTag = sectionTag, sectionTag < SectionStorageManager.shared.categorys.count else { return }
-
-        let lsCategory = SectionStorageManager.shared.categorys[sectionTag]
+        guard let sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
+        
+        let lsCategory = lsCategorys[sectionTag]
         lsCategory.title = categoryName
-
+        
         // 保存更新
-        SectionStorageManager.shared.save { [weak self] result in
+        StorageManager.shared.save { [weak self] result in
             switch result {
             case .success:
                 self?.fetchCategoryNamesAndUpdateSnapshot()
@@ -250,24 +253,24 @@ extension HomeViewController: AddCategoryViewControllerDelegate {
     
     func addCategoryViewControllerDidFinish(with categoryName: String) {
         // store new one into Core Data
-        SectionStorageManager.shared.saveCategory(title: categoryName) { [weak self] result in
+        StorageManager.shared.saveCategory(title: categoryName) { [weak self] result in
             switch result {
             case .success:
                 // update categorys array
                 self?.fetchCategoryNamesAndUpdateSnapshot()
             case .failure(let error):
-                print("Failed to save category: \(error)")
+                print("Failed to add category: \(error)")
             }
         }
     }
     
     private func fetchCategoryNamesAndUpdateSnapshot() {
         // get Core Data from new data
-        SectionStorageManager.shared.fetchCategoryNames { [weak self] result in
+        StorageManager.shared.fetchCategorys { [weak self] result in
             switch result {
             case .success(let categorys):
                 // update categorys array
-                SectionStorageManager.shared.categorys = categorys
+                self?.lsCategorys = categorys
                 self?.applySnapshot()
             case .failure(let error):
                 print("Failed to fetch category names: \(error)")

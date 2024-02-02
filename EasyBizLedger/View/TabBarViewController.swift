@@ -20,8 +20,8 @@ class TabBarViewController: UITabBarController {
         barAppearance.configureWithDefaultBackground()
         UITabBar.appearance().scrollEdgeAppearance = barAppearance
         
-        // load coredata
-        SectionStorageManager.shared.fetchCategoryNames()
+        // load core data
+        StorageManager.shared.fetchCategorys()
     }
 
     /*

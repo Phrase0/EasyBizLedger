@@ -10,9 +10,9 @@ import CoreData
 typealias LSCategoryResults = (Result<[LSCategory]>) -> Void
 typealias LSCategoryResult = (Result<LSCategory>) -> Void
 
-@objc class SectionStorageManager: NSObject {
+@objc class StorageManager: NSObject {
  
-    static let shared = SectionStorageManager()
+    static let shared = StorageManager()
     
     private enum Entity: String, CaseIterable {
         case LSCategory
@@ -42,7 +42,7 @@ typealias LSCategoryResult = (Result<LSCategory>) -> Void
     
     @objc dynamic var categorys: [LSCategory] = []
 
-    func fetchCategoryNames(completion: LSCategoryResults = { _ in }) {
+    func fetchCategorys(completion: LSCategoryResults = { _ in }) {
         let request = NSFetchRequest<LSCategory>(entityName: Entity.LSCategory.rawValue)
         do {
             let categorys = try viewContext.fetch(request)
@@ -63,7 +63,7 @@ typealias LSCategoryResult = (Result<LSCategory>) -> Void
     func save(completion: (Result<Void>) -> Void = { _ in  }) {
         do {
             try viewContext.save()
-            fetchCategoryNames(completion: { result in
+            fetchCategorys(completion: { result in
                 switch result {
                 case .success: completion(Result.success(()))
                 case .failure(let error): completion(Result.failure(error))
@@ -73,38 +73,10 @@ typealias LSCategoryResult = (Result<LSCategory>) -> Void
             completion(Result.failure(error))
         }
     }
+    
+    func deleteCategory(_ category: LSCategory, completion: (Result<Void>) -> Void) {
+        viewContext.delete(category)
+        save(completion: completion)
+    }
 
-}
-
-// MARK: - Data Operation
-private extension LSCategory {
-
-//    func mapping(_ object: Product) {
-//        detail = object.description
-//        id = object.id.int64()
-//        images = object.images
-//        mainImage = object.mainImage
-//        note = object.note
-//        place = object.note
-//        price = object.price.int64()
-//        sizes = object.sizes
-//        story = object.story
-//        texture = object.texture
-//        title = object.title
-//        wash = object.wash
-//        colors = NSSet(array:
-//            object.colors.map { color in
-//                let lsColor = LSColor(context: StorageManager.shared.viewContext)
-//                lsColor.mapping(color)
-//                return lsColor
-//            }
-//        )
-//        variants = NSSet(array:
-//            object.variants.map { variant in
-//                let lsVariant = LSVariant(context: StorageManager.shared.viewContext)
-//                lsVariant.mapping(variant)
-//                return lsVariant
-//            }
-//        )
-//    }
 }

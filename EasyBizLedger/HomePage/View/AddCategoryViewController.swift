@@ -134,7 +134,7 @@ class AddCategoryViewController: UIViewController {
         }
 
         // check repeat category name
-        if SectionStorageManager.shared.categorys.contains(where: { $0.title == categoryName }) {
+        if StorageManager.shared.categorys.contains(where: { $0.title == categoryName }) {
             showAlert(message: "This category name already exists.")
             return
         }
