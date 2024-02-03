@@ -12,6 +12,12 @@ class AddItemViewController: UIViewController {
     private var doneButton = UIButton(type: .custom)
     private var clearButton = UIButton(type: .custom)
     
+    var categoryLabel: String?
+    var nameLabel: String?
+    var priceLabel: Int?
+    var amountLabel: Int?
+    var photo: UIImage?
+    
     private lazy var addItemViewModel: AddItemViewModel = {
         return AddItemViewModel(
             doneTitle: NSLocalizedString("AddVC.done", comment: ""),
@@ -107,7 +113,6 @@ class AddItemViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITableViewDelegate
 extension AddItemViewController: UITableViewDelegate {
     
@@ -121,38 +126,42 @@ extension AddItemViewController: UITableViewDelegate {
                         return UITableViewCell()
                     }
                     return cell
-
+                    
                 case 1:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as? CategoryTableViewCell else {
                         return UITableViewCell()
                     }
+                    self.categoryLabel = cell.categoryButton.titleLabel?.text
                     return cell
-
+                    
                 case 2:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
                         return UITableViewCell()
                     }
+                    self.nameLabel = cell.itemTextField.text
                     return cell
-
+                    
                 case 3:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else {
                         return UITableViewCell()
                     }
+                    self.priceLabel = Int(cell.priceTextField.text!)
                     return cell
-
+                    
                 case 4:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: AmountTableViewCell.identifier, for: indexPath) as? AmountTableViewCell else {
                         return UITableViewCell()
                     }
+                    self.amountLabel = Int(cell.amountTextField.text!)
                     return cell
-
+                    
                 default:
                     return UITableViewCell()
                 }
             }
         )
     }
-  
+    
     private func applySnapshot() {
         // clean snapShot
         snapshot = NSDiffableDataSourceSnapshot<AddItemSection, String>()

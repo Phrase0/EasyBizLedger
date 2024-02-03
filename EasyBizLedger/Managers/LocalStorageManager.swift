@@ -11,7 +11,7 @@ typealias LSCategoryResults = (Result<[LSCategory]>) -> Void
 typealias LSCategoryResult = (Result<LSCategory>) -> Void
 
 @objc class LocalStorageManager: NSObject {
- 
+    
     static let shared = LocalStorageManager()
     
     private enum Entity: String, CaseIterable {
@@ -22,13 +22,13 @@ typealias LSCategoryResult = (Result<LSCategory>) -> Void
     private override init() {
         print(" Core data file path: \(NSPersistentContainer.defaultDirectoryURL())")
     }
-
+    
     // MARK: - Core Data stack
     lazy var persistanceContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "EasyBizLedger")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error {
-                 fatalError("Unresolved error \(error)")
+                fatalError("Unresolved error \(error)")
             }
         })
         return container
@@ -37,11 +37,11 @@ typealias LSCategoryResult = (Result<LSCategory>) -> Void
     var viewContext: NSManagedObjectContext {
         return persistanceContainer.viewContext
     }
-
+    
     // MARK: - Core Data Saving support
     
     @objc dynamic var categorys: [LSCategory] = []
-
+    
     func fetchCategorys(completion: LSCategoryResults = { _ in }) {
         let request = NSFetchRequest<LSCategory>(entityName: Entity.LSCategory.rawValue)
         do {
@@ -78,5 +78,16 @@ typealias LSCategoryResult = (Result<LSCategory>) -> Void
         viewContext.delete(category)
         save(completion: completion)
     }
+    
+    func saveItem(itemName: String, price: Int64, amount: Int64, photoData: Data?, completion: @escaping (Result<Void>) -> Void) {
+        let lsItem = LSItem(context: viewContext)
+        lsItem.itemName = itemName
+        lsItem.price = price
+        lsItem.amount = amount
+        lsItem.photo = photoData
+        save(completion: completion)
+    }
+
 
 }
+

@@ -71,7 +71,7 @@ class HomeTableViewCell: UITableViewCell {
         let textFieldBackgroundView = UIView()
         textFieldBackgroundView.layer.cornerRadius = 10
         textFieldBackgroundView.backgroundColor = UIColor.setColor(lightColor: .white, darkColor: .lightGray)
-        textFieldBackgroundView.layer.shadowColor = UIColor.setColor(lightColor: .black, darkColor: .white).cgColor
+        textFieldBackgroundView.layer.shadowColor = UIColor.labelColor.cgColor
         textFieldBackgroundView.layer.shadowOpacity = 0.2
         textFieldBackgroundView.layer.shadowOffset = CGSize(width: 2, height: 2)
         textFieldBackgroundView.layer.shadowRadius = 4

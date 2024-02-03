@@ -99,7 +99,6 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        print("Selected section header: \(section)")
         let category = snapshot.sectionIdentifiers[section]
         // add titleLabel
         let titleLabel = UILabel()
@@ -166,9 +165,8 @@ extension HomeViewController: UITableViewDelegate {
     
     // delete Button
     @objc func deleteButtonTapped(_ sender: UIButton) {
-        let sectionTag = sender.tag
-        print(sectionTag)
-        guard sectionTag < lsCategorys.count else { return }
+        sectionTag = sender.tag
+        guard let sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
         let categoryToDelete = lsCategorys[sectionTag]
         
         // add alert
@@ -230,7 +228,7 @@ extension HomeViewController: UITableViewDelegate {
             // add section
             snapshot.appendSections([category])
             
-            let itemsInSection = category.lSItems?.allObjects as? [LSItem] ?? []
+            let itemsInSection = category.items?.allObjects as? [LSItem] ?? []
             snapshot.appendItems(itemsInSection, toSection: category)
         }
         
