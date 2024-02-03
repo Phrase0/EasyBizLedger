@@ -7,15 +7,17 @@
 
 import UIKit
 
-protocol CategoryTableViewCellDelegate: AnyObject {
-    func categoryButtonUpdated()
-}
+//protocol CategoryTableViewCellDelegate: AnyObject {
+//    func categoryButtonUpdated()
+//}
 
 class CategoryTableViewCell: UITableViewCell {
     
     static let identifier = "\(CategoryTableViewCell.self)"
     
-    weak var delegate: CategoryTableViewCellDelegate?
+    let lsCategorys = LocalStorageManager.shared.categorys
+    
+    // weak var delegate: CategoryTableViewCellDelegate?
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
@@ -37,35 +39,36 @@ class CategoryTableViewCell: UITableViewCell {
         textFieldBackgroundView.layer.shadowRadius = 4
         return textFieldBackgroundView
     }()
-
-    lazy var categoryButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = UIColor.labelColor
-        // set pop up button
-        button.showsMenuAsPrimaryAction = true
-        button.changesSelectionAsPrimaryAction = true
-        updateCategoryButton()
-        
-        return button
+    
+    lazy var categoryTextField = {
+        let textField = UITextField()
+        textField.textAlignment = .center
+        let categoryData = lsCategorys.compactMap { $0.title }
+        textField.loadDropdownData(data: categoryData)
+        return textField
     }()
     
-    func updateCategoryButton() {
-        let lsCategorys = LocalStorageManager.shared.categorys
-        guard !lsCategorys.isEmpty else {
-            categoryButton.isEnabled = false
-            return
-        }
-
-        let menuItems: [UIAction] = lsCategorys.map { category in
-            return UIAction(title: category.title!, handler: { [weak self] action in
-                print(category.title)
-            })
-        }
-
-        let menu = UIMenu(children: menuItems)
-        categoryButton.menu = menu
-        categoryButton.isEnabled = true
-    }
+    //    lazy var categoryButton: UIButton = {
+    //        let button = UIButton(type: .system)
+    //        button.tintColor = UIColor.labelColor
+    //        // set pop up button
+    //        button.showsMenuAsPrimaryAction = true
+    //        button.changesSelectionAsPrimaryAction = true
+    //        let lsCategorys = LocalStorageManager.shared.categorys
+    //        guard !lsCategorys.isEmpty else {
+    //            categoryButton.isEnabled = false
+    //            return button
+    //        }
+    //        let menuItems: [UIAction] = lsCategorys.map { category in
+    //            return UIAction(title: category.title!, handler: { [weak self] action in
+    //                print(category.title)
+    //            })
+    //        }
+    //        let menu = UIMenu(children: menuItems)
+    //        categoryButton.menu = menu
+    //        categoryButton.isEnabled = true
+    //        return button
+    //    }()
     
     // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -73,7 +76,8 @@ class CategoryTableViewCell: UITableViewCell {
         setupCellUI()
         categoryLabel.sizeToFit()
         textFieldBackgroundView.sizeToFit()
-        categoryButton.sizeToFit()
+        categoryTextField.sizeToFit()
+        //categoryButton.sizeToFit()
     }
     
     override func prepareForReuse() {
@@ -88,7 +92,8 @@ class CategoryTableViewCell: UITableViewCell {
         // contentView.backgroundColor = .systemGray6
         contentView.addSubview(categoryLabel)
         contentView.addSubview(textFieldBackgroundView)
-        textFieldBackgroundView.addSubview(categoryButton)
+        textFieldBackgroundView.addSubview(categoryTextField)
+        //textFieldBackgroundView.addSubview(categoryButton)
         
         categoryLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(45)
@@ -103,9 +108,13 @@ class CategoryTableViewCell: UITableViewCell {
             make.width.equalTo(200)
         }
         
-        categoryButton.snp.makeConstraints { make in
+        categoryTextField.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
+        
+        //        categoryButton.snp.makeConstraints { make in
+        //            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
+        //        }
     }
     
 }

@@ -26,6 +26,8 @@
 		F8C8EF542B6A00FD003449F5 /* AmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */; };
 		F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */; };
 		F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */; };
+		F8CE73412B6E98FE002A4E63 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */; };
+		F8CE73432B6E9951002A4E63 /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73422B6E9951002A4E63 /* MyPickerView.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
@@ -64,6 +66,8 @@
 		F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewCell.swift; sourceTree = "<group>"; };
 		F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		F8CE73422B6E9951002A4E63 /* MyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */,
+				F8CE73422B6E9951002A4E63 /* MyPickerView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */,
 				F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */,
 				F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */,
+				F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -449,6 +455,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8CE73432B6E9951002A4E63 /* MyPickerView.swift in Sources */,
+				F8CE73412B6E98FE002A4E63 /* UITextField+Extension.swift in Sources */,
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
 				F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */,
 				F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */,

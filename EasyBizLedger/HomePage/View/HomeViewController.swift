@@ -246,7 +246,7 @@ extension HomeViewController: AddCategoryViewControllerDelegate {
         let lsCategory = lsCategorys[sectionTag]
         lsCategory.title = categoryName
         
-        // 保存更新
+        // save edit section
         LocalStorageManager.shared.save { [weak self] result in
             switch result {
             case .success:

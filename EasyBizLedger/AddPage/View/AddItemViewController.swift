@@ -100,7 +100,6 @@ class AddItemViewController: UIViewController {
     private func setupAutolayout() {
         // set addItemTableView
         addItemTableView.snp.makeConstraints { make in
-            
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
@@ -131,7 +130,7 @@ extension AddItemViewController: UITableViewDelegate {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as? CategoryTableViewCell else {
                         return UITableViewCell()
                     }
-                    self.categoryLabel = cell.categoryButton.titleLabel?.text
+                    //self.categoryLabel = cell.categoryButton.titleLabel?.text
                     return cell
                     
                 case 2:
