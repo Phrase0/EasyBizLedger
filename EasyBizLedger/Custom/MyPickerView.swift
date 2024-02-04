@@ -18,6 +18,7 @@ class MyPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 
         self.pickerData = pickerData
         self.pickerTextField = dropdownField
+        self.backgroundColor = .baseBackgroundColor
 
         self.delegate = self
         self.dataSource = self
@@ -44,7 +45,8 @@ class MyPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 
         self.pickerData = pickerData
         self.pickerTextField = dropdownField
-
+        self.backgroundColor = .baseBackgroundColor
+        
         self.delegate = self
         self.dataSource = self
 

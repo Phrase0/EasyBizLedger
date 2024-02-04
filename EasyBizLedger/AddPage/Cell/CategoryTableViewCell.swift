@@ -7,17 +7,9 @@
 
 import UIKit
 
-//protocol CategoryTableViewCellDelegate: AnyObject {
-//    func categoryButtonUpdated()
-//}
-
 class CategoryTableViewCell: UITableViewCell {
     
     static let identifier = "\(CategoryTableViewCell.self)"
-    
-    let lsCategorys = LocalStorageManager.shared.categorys
-    
-    // weak var delegate: CategoryTableViewCellDelegate?
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
@@ -40,36 +32,18 @@ class CategoryTableViewCell: UITableViewCell {
         return textFieldBackgroundView
     }()
     
-    lazy var categoryTextField = {
+    lazy var categoryTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .center
-        let categoryData = lsCategorys.compactMap { $0.title }
-        textField.loadDropdownData(data: categoryData)
         return textField
     }()
     
-    //    lazy var categoryButton: UIButton = {
-    //        let button = UIButton(type: .system)
-    //        button.tintColor = UIColor.labelColor
-    //        // set pop up button
-    //        button.showsMenuAsPrimaryAction = true
-    //        button.changesSelectionAsPrimaryAction = true
-    //        let lsCategorys = LocalStorageManager.shared.categorys
-    //        guard !lsCategorys.isEmpty else {
-    //            categoryButton.isEnabled = false
-    //            return button
-    //        }
-    //        let menuItems: [UIAction] = lsCategorys.map { category in
-    //            return UIAction(title: category.title!, handler: { [weak self] action in
-    //                print(category.title)
-    //            })
-    //        }
-    //        let menu = UIMenu(children: menuItems)
-    //        categoryButton.menu = menu
-    //        categoryButton.isEnabled = true
-    //        return button
-    //    }()
+    var updateDataHandler: (() -> Void)?
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        updateDataHandler?()
+    }
+  
     // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -77,7 +51,6 @@ class CategoryTableViewCell: UITableViewCell {
         categoryLabel.sizeToFit()
         textFieldBackgroundView.sizeToFit()
         categoryTextField.sizeToFit()
-        //categoryButton.sizeToFit()
     }
     
     override func prepareForReuse() {
@@ -93,7 +66,6 @@ class CategoryTableViewCell: UITableViewCell {
         contentView.addSubview(categoryLabel)
         contentView.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.addSubview(categoryTextField)
-        //textFieldBackgroundView.addSubview(categoryButton)
         
         categoryLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(45)
@@ -111,10 +83,5 @@ class CategoryTableViewCell: UITableViewCell {
         categoryTextField.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
         }
-        
-        //        categoryButton.snp.makeConstraints { make in
-        //            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10))
-        //        }
     }
-    
 }
