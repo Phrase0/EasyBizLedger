@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     
     private lazy var homeViewModel: HomeViewModel = {
         return HomeViewModel(
-            title: NSLocalizedString("HomeVC.addCategory", comment: ""),
+            title: NSLocalizedString("HomeVC.addCategory"),
             color: UIColor.systemBlue,
             imageName: "plus")
     }()
@@ -42,11 +42,21 @@ class HomeViewController: UIViewController {
         view.addSubview(homeTableView)
         setupUI()
         configureDataSource()
-        applySnapshot()
+        // applySnapshot()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        LocalStorageManager.shared.fetchCategorys() { [weak self] result in
+            switch result {
+            case .success(_):
+                // update categorys array
+                self?.applySnapshot()
+            case .failure(let error):
+                print("Failed to fetch category names: \(error)")
+            }
+        }
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -212,7 +222,7 @@ extension HomeViewController: UITableViewDelegate {
                 cell.nameLabel.text = category.itemName
                 cell.priceLabel.text = "Price: \(category.price)"
                 cell.stockLabel.text = "Stock: \(category.amount)"
-                // cell.photoImageView.image = category.photo
+                cell.photoImageView.image = UIImage(data: category.photo ?? Data())
                 cell.contentView.backgroundColor = .baseBackgroundColor
                 return cell
             }
@@ -224,16 +234,13 @@ extension HomeViewController: UITableViewDelegate {
         snapshot = NSDiffableDataSourceSnapshot<LSCategory, LSItem>()
         
         for category in lsCategorys {
-            
             // add section
             snapshot.appendSections([category])
-            
+            // add item
             let itemsInSection = category.items?.allObjects as? [LSItem] ?? []
             snapshot.appendItems(itemsInSection, toSection: category)
         }
-        
         dataSource.apply(snapshot, animatingDifferences: false)
-        
     }
 }
 

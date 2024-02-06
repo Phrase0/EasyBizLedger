@@ -38,6 +38,12 @@ class PriceTableViewCell: UITableViewCell {
         textField.keyboardType = .numberPad
         return textField
     }()
+    
+    var updateDataHandler: (() -> Void)?
+    
+    @objc private func textFieldEditingDidEnd() {
+            updateDataHandler?()
+        }
 
     // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,6 +52,8 @@ class PriceTableViewCell: UITableViewCell {
         priceLabel.sizeToFit()
         textFieldBackgroundView.sizeToFit()
         priceTextField.sizeToFit()
+        
+        priceTextField.addTarget(self, action: #selector(textFieldEditingDidEnd), for: .editingDidEnd)
     }
     
     override func prepareForReuse() {
@@ -81,4 +89,10 @@ class PriceTableViewCell: UITableViewCell {
         }
     }
     
+}
+
+extension PriceTableViewCell: ClearableTextFieldCell {
+    var textField: UITextField {
+        return priceTextField
+    }
 }

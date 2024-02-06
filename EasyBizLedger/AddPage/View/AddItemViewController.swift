@@ -12,21 +12,21 @@ class AddItemViewController: UIViewController {
     private var doneButton = UIButton(type: .custom)
     private var clearButton = UIButton(type: .custom)
     
-    var selectedCategory: String?
+    var selectedCategory: LSCategory?
     var nameLabel: String?
-    var priceLabel: Int?
-    var amountLabel: Int?
+    var price: Int?
+    var amount: Int?
     var photo: UIImage?
     
     private lazy var addItemViewModel: AddItemViewModel = {
         return AddItemViewModel(
-            doneTitle: NSLocalizedString("AddVC.done", comment: ""),
-            clearTitle: NSLocalizedString("Clear", comment: ""),
+            doneTitle: NSLocalizedString("AddVC.done"),
+            clearTitle: NSLocalizedString("Clear"),
             doneColor: UIColor.black,
             clearColor: UIColor.black,
             doneBackgroundColor: UIColor.lightGray,
             clearBackgroundColor: UIColor.lightGray,
-            categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel", comment: ""),
+            categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel"),
             categoryTitleColor: UIColor.black)
     }()
     
@@ -55,7 +55,7 @@ class AddItemViewController: UIViewController {
         addItemTableView.delegate = self
         setupUI()
         configureDataSource()
-        //applySnapshot()
+        // applySnapshot()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,14 +120,50 @@ class AddItemViewController: UIViewController {
         }
     }
     @objc private func doneButtonTapped() {
-        print(selectedCategory)
-        print(nameLabel)
-        print(priceLabel)
-        print(amountLabel)
+        guard let selectedCategory = selectedCategory else {
+            print("don't have category")
+            return
+        }
+        
+        guard let nameLabel = nameLabel, let price = price, let amount = amount else {
+            print("Item details are incomplete")
+            return
+        }
+        
+        // Use the selected category when saving the item
+        LocalStorageManager.shared.saveItem(itemName: nameLabel, price: price, amount: amount, photoData: UIImage(named: "demo"), inCategory: selectedCategory) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.selectedCategory = nil
+                self.nameLabel = nil
+                self.price = nil
+                self.amount = nil
+                // Clear the categoryTextField
+                // Clear the text fields
+                let indexPaths: [IndexPath] = [
+                    IndexPath(row: CellType.item.rawValue, section: 0),
+                    IndexPath(row: CellType.price.rawValue, section: 0),
+                    IndexPath(row: CellType.amount.rawValue, section: 0)
+                ]
+                
+                indexPaths.forEach { indexPath in
+                    if let cell = self.addItemTableView.cellForRow(at: indexPath) as? ClearableTextFieldCell {
+                        cell.clearTextField()
+                    }
+                }
+                
+                print("Item saved successfully.")
+                
+            case .failure(let error):
+                print("Failed to save item: \(error)")
+            }
+        }
     }
     
     @objc private func cancelButtonTapped() {
     }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -142,6 +178,7 @@ extension AddItemViewController: UITableViewDelegate {
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.identifier, for: indexPath) as? PhotoTableViewCell else {
                         return UITableViewCell()
                     }
+                    cell.photoImageView.image = UIImage(named: "demo")
                     return cell
                     
                 case .category:
@@ -149,31 +186,38 @@ extension AddItemViewController: UITableViewDelegate {
                         return UITableViewCell()
                     }
                     self.configureCategoryTextField(cell.categoryTextField, with: LocalStorageManager.shared.categorys)
-                    cell.updateDataHandler = { [weak self] in
-                        self?.configureCategoryTextField(cell.categoryTextField, with: LocalStorageManager.shared.categorys)
-                        self?.selectedCategory = cell.categoryTextField.text
-                    }
+                    
                     return cell
                     
                 case .item:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.identifier, for: indexPath) as? ItemTableViewCell else {
                         return UITableViewCell()
                     }
-                    self.nameLabel = cell.itemTextField.text
+                    cell.updateDataHandler = { [weak self] in
+                        // Call the updateDataHandler to refresh the UI
+                        self?.configureItemTextField(cell.itemTextField, with: LocalStorageManager.shared.items)
+                    }
+                    
                     return cell
                     
                 case .price:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: PriceTableViewCell.identifier, for: indexPath) as? PriceTableViewCell else {
                         return UITableViewCell()
                     }
-                    self.priceLabel = Int(cell.priceTextField.text!)
+                    cell.updateDataHandler = { [weak self] in
+                        // Call the updateDataHandler to refresh the UI
+                        self?.configurePriceTextField(cell.priceTextField, with: LocalStorageManager.shared.items)
+                    }
                     return cell
                     
                 case .amount:
                     guard let cell = tableView.dequeueReusableCell(withIdentifier: AmountTableViewCell.identifier, for: indexPath) as? AmountTableViewCell else {
                         return UITableViewCell()
                     }
-                    self.amountLabel = Int(cell.amountTextField.text!)
+                    cell.updateDataHandler = { [weak self] in
+                        // Call the updateDataHandler to refresh the UI
+                        self?.configureAmountTextField(cell.amountTextField, with: LocalStorageManager.shared.items)
+                    }
                     return cell
                     
                 default:
@@ -187,7 +231,7 @@ extension AddItemViewController: UITableViewDelegate {
         // clean snapShot
         snapshot = NSDiffableDataSourceSnapshot<AddItemSection, CellType>()
         snapshot.appendSections([.main])
-
+        
         // Assuming `showListArray` contains `CellType` raw values
         let cellTypes = showListArray.compactMap { CellType(rawValue: $0) }
         snapshot.appendItems(cellTypes, toSection: .main)
@@ -196,6 +240,20 @@ extension AddItemViewController: UITableViewDelegate {
     
     func configureCategoryTextField(_ textField: UITextField, with lsCategorys: [LSCategory]) {
         let categoryData = lsCategorys.compactMap { $0.title }
-        textField.loadDropdownData(data: categoryData)
+        textField.loadDropdownData(data: categoryData) { selectedText in
+            self.selectedCategory = LocalStorageManager.shared.categorys.first { $0.title == selectedText }
+            print("Selected category: \(selectedText)")
+        }
     }
+   
+    func configureItemTextField(_ textField: UITextField, with lsItems: [LSItem]) {
+        self.nameLabel = textField.text
+    }
+    func configurePriceTextField(_ textField: UITextField, with lsItems: [LSItem]) {
+        self.price = Int(textField.text ?? "0")
+    }
+    func configureAmountTextField(_ textField: UITextField, with lsItems: [LSItem]) {
+        self.amount = Int(textField.text ?? "0")
+    }
+    
 }

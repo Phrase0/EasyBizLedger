@@ -28,6 +28,8 @@
 		F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */; };
 		F8CE73412B6E98FE002A4E63 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */; };
 		F8CE73432B6E9951002A4E63 /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73422B6E9951002A4E63 /* MyPickerView.swift */; };
+		F8CE73452B70AF63002A4E63 /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73442B70AF63002A4E63 /* NSLocalizedString+Extension.swift */; };
+		F8CE73472B725B39002A4E63 /* ClearableTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73462B725B39002A4E63 /* ClearableTextFieldCell.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
@@ -68,6 +70,8 @@
 		F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		F8CE73422B6E9951002A4E63 /* MyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
+		F8CE73442B70AF63002A4E63 /* NSLocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocalizedString+Extension.swift"; sourceTree = "<group>"; };
+		F8CE73462B725B39002A4E63 /* ClearableTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldCell.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 			children = (
 				F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */,
 				F8CE73422B6E9951002A4E63 /* MyPickerView.swift */,
+				F8CE73462B725B39002A4E63 /* ClearableTextFieldCell.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */,
 				F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */,
 				F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */,
+				F8CE73442B70AF63002A4E63 /* NSLocalizedString+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				F8CE73412B6E98FE002A4E63 /* UITextField+Extension.swift in Sources */,
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
 				F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */,
+				F8CE73452B70AF63002A4E63 /* NSLocalizedString+Extension.swift in Sources */,
 				F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */,
 				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
 				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
@@ -473,6 +480,7 @@
 				F8C8EF4E2B69FEEB003449F5 /* AddItemViewController.swift in Sources */,
 				F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */,
 				F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */,
+				F8CE73472B725B39002A4E63 /* ClearableTextFieldCell.swift in Sources */,
 				F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */,
 				F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */,
 				F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */,

@@ -26,13 +26,13 @@ class AddCategoryViewController: UIViewController {
     
     private var addCategoryViewModel: AddCategoryViewModel = {
         return AddCategoryViewModel(
-            doneTitle: NSLocalizedString("AddVC.done", comment: ""),
-            cancelTitle: NSLocalizedString("AddVC.cancel", comment: ""),
+            doneTitle: NSLocalizedString("AddVC.done"),
+            cancelTitle: NSLocalizedString("AddVC.cancel"),
             doneColor: UIColor.black,
             cancelColor: UIColor.black,
             doneBackgroundColor: UIColor.lightGray,
             cancelBackgroundColor: UIColor.lightGray,
-            categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel", comment: ""),
+            categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel"),
             categoryTitleColor: UIColor.setColor(lightColor: .darkGray, darkColor: .white))
     }()
     

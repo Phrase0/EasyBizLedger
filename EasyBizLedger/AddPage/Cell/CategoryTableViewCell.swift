@@ -38,12 +38,6 @@ class CategoryTableViewCell: UITableViewCell {
         return textField
     }()
     
-    var updateDataHandler: (() -> Void)?
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        updateDataHandler?()
-    }
-  
     // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

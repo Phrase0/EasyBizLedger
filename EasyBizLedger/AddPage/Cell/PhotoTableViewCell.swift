@@ -16,7 +16,6 @@ class PhotoTableViewCell: UITableViewCell {
         photoImageView.contentMode = .scaleAspectFill
         photoImageView.clipsToBounds = true
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
-        photoImageView.image = UIImage(imageLiteralResourceName: "demo")
         return photoImageView
     }()
     

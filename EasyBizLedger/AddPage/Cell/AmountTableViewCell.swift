@@ -39,6 +39,12 @@ class AmountTableViewCell: UITableViewCell {
         return textField
     }()
 
+    var updateDataHandler: (() -> Void)?
+    
+    @objc private func textFieldEditingDidEnd() {
+            updateDataHandler?()
+        }
+    
     // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,6 +52,8 @@ class AmountTableViewCell: UITableViewCell {
         amountLabel.sizeToFit()
         textFieldBackgroundView.sizeToFit()
         amountTextField.sizeToFit()
+        
+        amountTextField.addTarget(self, action: #selector(textFieldEditingDidEnd), for: .editingDidEnd)
     }
     
     override func prepareForReuse() {
@@ -81,4 +89,10 @@ class AmountTableViewCell: UITableViewCell {
         }
     }
     
+}
+
+extension AmountTableViewCell: ClearableTextFieldCell {
+    var textField: UITextField {
+        return amountTextField
+    }
 }
