@@ -55,7 +55,7 @@ class AddItemViewController: UIViewController {
         addItemTableView.delegate = self
         setupUI()
         configureDataSource()
-        // applySnapshot()
+        applySnapshot()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +64,7 @@ class AddItemViewController: UIViewController {
             switch result {
             case .success(_):
                 // update categorys array
-                self?.applySnapshot()
+                self?.updateCategoryCell()
             case .failure(let error):
                 print("Failed to fetch category names: \(error)")
             }
@@ -119,6 +119,7 @@ class AddItemViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
+    
     @objc private func doneButtonTapped() {
         guard let selectedCategory = selectedCategory else {
             print("don't have category")
@@ -153,6 +154,10 @@ class AddItemViewController: UIViewController {
                     }
                 }
                 
+                // go back to homeVC
+                if let tabBarController = self.tabBarController {
+                        tabBarController.selectedIndex = 0
+                    }
                 print("Item saved successfully.")
                 
             case .failure(let error):
@@ -162,6 +167,19 @@ class AddItemViewController: UIViewController {
     }
     
     @objc private func cancelButtonTapped() {
+        // Clear the categoryTextField
+        // Clear the text fields
+        let indexPaths: [IndexPath] = [
+            IndexPath(row: CellType.item.rawValue, section: 0),
+            IndexPath(row: CellType.price.rawValue, section: 0),
+            IndexPath(row: CellType.amount.rawValue, section: 0)
+        ]
+        
+        indexPaths.forEach { indexPath in
+            if let cell = self.addItemTableView.cellForRow(at: indexPath) as? ClearableTextFieldCell {
+                cell.clearTextField()
+            }
+        }
     }
     
 }
@@ -219,9 +237,6 @@ extension AddItemViewController: UITableViewDelegate {
                         self?.configureAmountTextField(cell.amountTextField, with: LocalStorageManager.shared.items)
                     }
                     return cell
-                    
-                default:
-                    return UITableViewCell()
                 }
             }
         )
@@ -237,7 +252,22 @@ extension AddItemViewController: UITableViewDelegate {
         snapshot.appendItems(cellTypes, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
+   
+    private func updateCategoryCell() {
+        // Get the current snapshot
+        var currentSnapshot = dataSource.snapshot()
+        // Check if there is a cell of type .category
+        guard let sectionIndex = currentSnapshot.sectionIdentifiers.firstIndex(of: .main),
+              let categoryIndex = currentSnapshot.itemIdentifiers(inSection: .main).firstIndex(of: .category) else {
+            return
+        }
+        // Reset the data for the .category type cell
+        let indexPath = IndexPath(row: categoryIndex, section: sectionIndex)
+        if let cell = addItemTableView.cellForRow(at: indexPath) as? CategoryTableViewCell {
+            self.configureCategoryTextField(cell.categoryTextField, with: LocalStorageManager.shared.categorys)
+        }
+    }
+
     func configureCategoryTextField(_ textField: UITextField, with lsCategorys: [LSCategory]) {
         let categoryData = lsCategorys.compactMap { $0.title }
         textField.loadDropdownData(data: categoryData) { selectedText in
@@ -245,7 +275,7 @@ extension AddItemViewController: UITableViewDelegate {
             print("Selected category: \(selectedText)")
         }
     }
-   
+    
     func configureItemTextField(_ textField: UITextField, with lsItems: [LSItem]) {
         self.nameLabel = textField.text
     }

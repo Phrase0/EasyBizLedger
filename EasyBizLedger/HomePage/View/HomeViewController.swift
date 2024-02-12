@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         view.addSubview(homeTableView)
         setupUI()
         configureDataSource()
-        // applySnapshot()
+        applySnapshot()
     }
     
     override func viewWillAppear(_ animated: Bool) {
