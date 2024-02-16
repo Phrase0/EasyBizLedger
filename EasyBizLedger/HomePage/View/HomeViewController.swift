@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     
     private lazy var homeViewModel: HomeViewModel = {
         return HomeViewModel(
-            title: NSLocalizedString("HomeVC.addCategory", comment: ""),
+            title: NSLocalizedString("HomeVC.addCategory"),
             color: UIColor.systemBlue,
             imageName: "plus")
     }()
@@ -23,16 +23,16 @@ class HomeViewController: UIViewController {
         return  CustomTableView(
             rowHeight: UITableView.automaticDimension,
             separatorStyle: .singleLine,
-            allowsSelection: false,
+            allowsSelection: true,
             registerCells: [HomeTableViewCell.self],
             style: .insetGrouped,
             backgroundColor: .systemGray6)
     }()
     
-    var snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-    var dataSource: UITableViewDiffableDataSource<Category, Item>!
+    var snapshot = NSDiffableDataSourceSnapshot<LSCategory, LSItem>()
+    var dataSource: UITableViewDiffableDataSource<LSCategory, LSItem>!
     
-    static var sectionNames:[String] = []
+    var lsCategorys = LocalStorageManager.shared.categorys
     var sectionTag: Int?
     
     override func viewDidLoad() {
@@ -43,7 +43,20 @@ class HomeViewController: UIViewController {
         setupUI()
         configureDataSource()
         applySnapshot()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        LocalStorageManager.shared.fetchCategorys() { [weak self] result in
+            switch result {
+            case .success(_):
+                // update categorys array
+                self?.applySnapshot()
+            case .failure(let error):
+                print("Failed to fetch category names: \(error)")
+            }
+        }
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,16 +104,16 @@ class HomeViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        
         let category = snapshot.sectionIdentifiers[section]
         // add titleLabel
         let titleLabel = UILabel()
         titleLabel.text = category.title
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.setColor(lightColor: .darkGray, darkColor: .white)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         headerView.addSubview(titleLabel)
         
@@ -147,60 +160,69 @@ extension HomeViewController: UITableViewDelegate {
     // Edit button
     @objc func editButtonTapped(_ sender: UIButton) {
         sectionTag = sender.tag
-        guard let sectionTag = sectionTag, sectionTag < HomeViewController.sectionNames.count else { return }
+        guard let sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
+        
         let addCategoryViewController = AddCategoryViewController()
         addCategoryViewController.delegate = self
         addCategoryViewController.originatingPage = 2
-        addCategoryViewController.originCategoryName = HomeViewController.sectionNames[sectionTag]
+        
+        let selectedCategoryTitle = lsCategorys[sectionTag].title
+        addCategoryViewController.originCategoryName = selectedCategoryTitle
+        
         addCategoryViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(addCategoryViewController, animated: true)
-        
     }
     
     // delete Button
     @objc func deleteButtonTapped(_ sender: UIButton) {
         sectionTag = sender.tag
-        print("delete:\(sectionTag)")
-        guard let sectionTag = sectionTag, sectionTag < HomeViewController.sectionNames.count else { return }
-
-        let sectionName = HomeViewController.sectionNames[sectionTag]
+        guard let sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
+        let categoryToDelete = lsCategorys[sectionTag]
+        
         // add alert
         let alertController = UIAlertController(
             title: "Warning",
             message: "Are you sure to delete?",
             preferredStyle: .alert
         )
-
+        
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-
+        
         let deleteAction = UIAlertAction(title: "delete", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             // delete section
-            HomeViewController.sectionNames.remove(at: sectionTag)
-            
-            self.applySnapshot()
+            LocalStorageManager.shared.deleteCategory(categoryToDelete) { [weak self] result in
+                switch result {
+                case .success:
+                    guard var snapshot = self?.dataSource?.snapshot() else {return}
+                    snapshot.deleteSections([categoryToDelete])
+                    self?.dataSource?.apply(snapshot, animatingDifferences: false)
+                case .failure(let error):
+                    print("Failed to delete category: \(error)")
+                }
+            }
         }
         alertController.addAction(deleteAction)
-
+        
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    // ---------------------------------------------------
+    
     private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource<Category, Item>(
+        dataSource = UITableViewDiffableDataSource<LSCategory, LSItem>(
             tableView: homeTableView,
             cellProvider: { tableView, indexPath, category in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
                     return UITableViewCell()
                 }
                 
-                cell.nameLabel.text = category.nameLabel
-                cell.priceLabel.text = "Price: \(category.priceLabel)"
-                cell.stockLabel.text = "Stock: \(category.stockLabel)"
-                cell.photoImageView.image = category.photo
+                cell.nameLabel.text = category.itemName
+                cell.priceLabel.text = "Price: \(category.price)"
+                cell.stockLabel.text = "Stock: \(category.amount)"
+                cell.photoImageView.image = UIImage(data: category.photo ?? Data())
                 cell.contentView.backgroundColor = .baseBackgroundColor
                 return cell
             }
@@ -209,37 +231,64 @@ extension HomeViewController: UITableViewDelegate {
     
     private func applySnapshot() {
         // clean snapShot
-        snapshot = NSDiffableDataSourceSnapshot<Category, Item>()
-        for sectionName in HomeViewController.sectionNames {
-            let newSection = Category(title: sectionName)
-            // 為每個 sectionName 增加 section
-            snapshot.appendSections([newSection])
-            
-            let categoriesInSection1 = [
-                Item(nameLabel: "Item 1", priceLabel: 10, stockLabel: 10, photo: UIImage(imageLiteralResourceName: "demo")),
-                Item(nameLabel: "Item 2", priceLabel: 15, stockLabel: 25, photo: UIImage(imageLiteralResourceName: "demo"))
-            ]
-            
-            snapshot.appendItems(categoriesInSection1, toSection: newSection)
-        }
+        snapshot = NSDiffableDataSourceSnapshot<LSCategory, LSItem>()
         
+        for category in lsCategorys {
+            // add section
+            snapshot.appendSections([category])
+            // add item
+            let itemsInSection = category.items?.allObjects as? [LSItem] ?? []
+            snapshot.appendItems(itemsInSection, toSection: category)
+        }
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
-  
 }
 
+// MARK: - AddCategoryViewControllerDelegate
 extension HomeViewController: AddCategoryViewControllerDelegate {
+    
     func editCategoryViewControllerDidFinish(with categoryName: String) {
-        guard let sectionTag = sectionTag, sectionTag < HomeViewController.sectionNames.count else { return }
-        HomeViewController.sectionNames[sectionTag] = categoryName
-        applySnapshot()
+        guard let sectionTag = sectionTag, sectionTag < lsCategorys.count else { return }
         
+        let lsCategory = lsCategorys[sectionTag]
+        lsCategory.title = categoryName
+        
+        // save edit section
+        LocalStorageManager.shared.save { [weak self] result in
+            switch result {
+            case .success:
+                self?.fetchCategoryNamesAndUpdateSnapshot()
+            case .failure(let error):
+                print("Failed to save edited category: \(error)")
+            }
+        }
     }
     
     func addCategoryViewControllerDidFinish(with categoryName: String) {
-        HomeViewController.sectionNames.append(categoryName)
-        applySnapshot()
+        // store new one into Core Data
+        LocalStorageManager.shared.saveCategory(title: categoryName) { [weak self] result in
+            switch result {
+            case .success:
+                // update categorys array
+                self?.fetchCategoryNamesAndUpdateSnapshot()
+            case .failure(let error):
+                print("Failed to add category: \(error)")
+            }
+        }
+    }
+    
+    private func fetchCategoryNamesAndUpdateSnapshot() {
+        // get Core Data from new data
+        LocalStorageManager.shared.fetchCategorys { [weak self] result in
+            switch result {
+            case .success(let categorys):
+                // update categorys array
+                self?.lsCategorys = categorys
+                self?.applySnapshot()
+            case .failure(let error):
+                print("Failed to fetch category names: \(error)")
+            }
+        }
     }
     
 }

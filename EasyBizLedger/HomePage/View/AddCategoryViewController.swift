@@ -26,14 +26,14 @@ class AddCategoryViewController: UIViewController {
     
     private var addCategoryViewModel: AddCategoryViewModel = {
         return AddCategoryViewModel(
-            doneTitle: NSLocalizedString("AddVC.done", comment: ""),
-            cancelTitle: NSLocalizedString("AddVC.cancel", comment: ""),
+            doneTitle: NSLocalizedString("AddVC.done"),
+            cancelTitle: NSLocalizedString("AddVC.cancel"),
             doneColor: UIColor.black,
             cancelColor: UIColor.black,
             doneBackgroundColor: UIColor.lightGray,
             cancelBackgroundColor: UIColor.lightGray,
-            categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel", comment: ""),
-            categoryTitleColor: UIColor.black)
+            categoryTitleLabel: NSLocalizedString("AddVC.categoryTitleLabel"),
+            categoryTitleColor: UIColor.setColor(lightColor: .darkGray, darkColor: .white))
     }()
     
     weak var delegate: AddCategoryViewControllerDelegate?
@@ -85,14 +85,16 @@ class AddCategoryViewController: UIViewController {
         // textFieldBackgroundView
         view.addSubview(textFieldBackgroundView)
         textFieldBackgroundView.layer.cornerRadius = 10
-        textFieldBackgroundView.backgroundColor = .white
-        textFieldBackgroundView.layer.shadowColor = UIColor.black.cgColor
+        textFieldBackgroundView.backgroundColor = UIColor.setColor(lightColor: .white, darkColor: .lightGray)
+        textFieldBackgroundView.layer.shadowColor = UIColor.labelColor.cgColor
         textFieldBackgroundView.layer.shadowOpacity = 0.2
         textFieldBackgroundView.layer.shadowOffset = CGSize(width: 2, height: 2)
         textFieldBackgroundView.layer.shadowRadius = 4
         
         // categoryTitleLabel
         categoryTitleLabel.text = addCategoryViewModel.categoryTitleLabel
+            categoryTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            categoryTitleLabel.textColor = addCategoryViewModel.categoryTitleColor
         view.addSubview(categoryTitleLabel)
         
         // categoryTextField
@@ -102,8 +104,6 @@ class AddCategoryViewController: UIViewController {
     }
     
     private func setupAutolayout() {
-        categoryTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        categoryTitleLabel.textColor = addCategoryViewModel.categoryTitleColor
         categoryTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.snp_topMargin).offset(30)
             make.leading.equalToSuperview().offset(20)
@@ -134,7 +134,7 @@ class AddCategoryViewController: UIViewController {
         }
 
         // check repeat category name
-        if HomeViewController.sectionNames.contains(categoryName) {
+        if LocalStorageManager.shared.categorys.contains(where: { $0.title == categoryName }) {
             showAlert(message: "This category name already exists.")
             return
         }
