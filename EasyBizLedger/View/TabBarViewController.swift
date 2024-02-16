@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // load core data
-        LocalStorageManager.shared.fetchCategorys { _ in
+        LocalStorageManager.shared.fetchCategorys() { _ in
             // Set up tab bar controller when data is loaded
             viewControllers = tabs.map { $0.makeViewController() }
             let barAppearance =  UITabBarAppearance()

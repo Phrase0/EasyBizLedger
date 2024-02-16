@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */; };
 		F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F811F3E32B370B3000D5E744 /* .swiftlint.yml */; };
+		F81E39262B7FBEF30053B8EF /* LedgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E39252B7FBEF30053B8EF /* LedgerViewController.swift */; };
 		F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */; };
 		F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */; };
 		F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */; };
@@ -51,6 +52,7 @@
 		8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBizLedger.debug.xcconfig"; path = "Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger.debug.xcconfig"; sourceTree = "<group>"; };
 		DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBizLedger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F811F3E32B370B3000D5E744 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		F81E39252B7FBEF30053B8EF /* LedgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerViewController.swift; sourceTree = "<group>"; };
 		F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				F8D888A02B39E60200C1E482 /* HomeViewController.swift */,
 				F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */,
+				F81E39252B7FBEF30053B8EF /* LedgerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				F8C8EF4C2B69FEEB003449F5 /* PhotoTableViewCell.swift in Sources */,
 				F8C8EEE62B6119ED003449F5 /* HomeTableViewCell.swift in Sources */,
 				F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */,
+				F81E39262B7FBEF30053B8EF /* LedgerViewController.swift in Sources */,
 				F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */,
 				F8C8EF4E2B69FEEB003449F5 /* AddItemViewController.swift in Sources */,
 				F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */,
