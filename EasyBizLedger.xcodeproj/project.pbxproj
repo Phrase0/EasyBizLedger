@@ -7,25 +7,92 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */; };
+		F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F811F3E32B370B3000D5E744 /* .swiftlint.yml */; };
+		F81E39262B7FBEF30053B8EF /* LedgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81E39252B7FBEF30053B8EF /* LedgerViewController.swift */; };
+		F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */; };
+		F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */; };
+		F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */; };
+		F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE22B4AF040003449F5 /* AddCategoryViewModel.swift */; };
+		F8C8EEE62B6119ED003449F5 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE52B6119ED003449F5 /* HomeTableViewCell.swift */; };
+		F8C8EEE82B650AD6003449F5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */; };
+		F8C8EEEB2B650B2F003449F5 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */; };
+		F8C8EF4A2B69FEEB003449F5 /* AddItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF422B69FEEB003449F5 /* AddItemViewModel.swift */; };
+		F8C8EF4B2B69FEEB003449F5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF442B69FEEB003449F5 /* CategoryTableViewCell.swift */; };
+		F8C8EF4C2B69FEEB003449F5 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF452B69FEEB003449F5 /* PhotoTableViewCell.swift */; };
+		F8C8EF4D2B69FEEB003449F5 /* AddItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF472B69FEEB003449F5 /* AddItemModel.swift */; };
+		F8C8EF4E2B69FEEB003449F5 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF492B69FEEB003449F5 /* AddItemViewController.swift */; };
+		F8C8EF502B6A0090003449F5 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */; };
+		F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */; };
+		F8C8EF542B6A00FD003449F5 /* AmountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */; };
+		F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */; };
+		F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */; };
+		F8CE73412B6E98FE002A4E63 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */; };
+		F8CE73432B6E9951002A4E63 /* MyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73422B6E9951002A4E63 /* MyPickerView.swift */; };
+		F8CE73452B70AF63002A4E63 /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73442B70AF63002A4E63 /* NSLocalizedString+Extension.swift */; };
+		F8CE73472B725B39002A4E63 /* ClearableTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE73462B725B39002A4E63 /* ClearableTextFieldCell.swift */; };
 		F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */; };
 		F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */; };
-		F8CE8E822B32E0F900389230 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E812B32E0F900389230 /* ViewController.swift */; };
-		F8CE8E852B32E0F900389230 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E832B32E0F900389230 /* Main.storyboard */; };
 		F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */; };
 		F8CE8E8A2B32E0FA00389230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E892B32E0FA00389230 /* Assets.xcassets */; };
 		F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */; };
+		F8D888832B371C8700C1E482 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8D888822B371C8700C1E482 /* GoogleService-Info.plist */; };
+		F8D8888E2B3749BB00C1E482 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8D888902B3749BB00C1E482 /* Localizable.strings */; };
+		F8D888942B374A9A00C1E482 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8D888962B374A9A00C1E482 /* InfoPlist.strings */; };
+		F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888992B39B3D700C1E482 /* TabBarViewController.swift */; };
+		F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */; };
+		F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */; };
+		F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A02B39E60200C1E482 /* HomeViewController.swift */; };
+		F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A42B39E6D400C1E482 /* ListViewController.swift */; };
+		F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E0276FA0516DD7DDDB29913 /* Pods-EasyBizLedger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBizLedger.release.xcconfig"; path = "Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger.release.xcconfig"; sourceTree = "<group>"; };
+		8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyBizLedger.debug.xcconfig"; path = "Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger.debug.xcconfig"; sourceTree = "<group>"; };
+		DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyBizLedger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F811F3E32B370B3000D5E744 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		F81E39252B7FBEF30053B8EF /* LedgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerViewController.swift; sourceTree = "<group>"; };
+		F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		F8C8EEE22B4AF040003449F5 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
+		F8C8EEE52B6119ED003449F5 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		F8C8EF422B69FEEB003449F5 /* AddItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewModel.swift; sourceTree = "<group>"; };
+		F8C8EF442B69FEEB003449F5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF452B69FEEB003449F5 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF472B69FEEB003449F5 /* AddItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemModel.swift; sourceTree = "<group>"; };
+		F8C8EF492B69FEEB003449F5 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTableViewCell.swift; sourceTree = "<group>"; };
+		F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		F8CE73422B6E9951002A4E63 /* MyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPickerView.swift; sourceTree = "<group>"; };
+		F8CE73442B70AF63002A4E63 /* NSLocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocalizedString+Extension.swift"; sourceTree = "<group>"; };
+		F8CE73462B725B39002A4E63 /* ClearableTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextFieldCell.swift; sourceTree = "<group>"; };
 		F8CE8E7A2B32E0F900389230 /* EasyBizLedger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyBizLedger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F8CE8E812B32E0F900389230 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F8CE8E842B32E0F900389230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F8CE8E872B32E0F900389230 /* EasyBizLedger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EasyBizLedger.xcdatamodel; sourceTree = "<group>"; };
 		F8CE8E892B32E0FA00389230 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8CE8E8C2B32E0FA00389230 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8CE8E8E2B32E0FA00389230 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8D888822B371C8700C1E482 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8D8888B2B37497D00C1E482 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F8D8888F2B3749BB00C1E482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F8D888912B3749C300C1E482 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F8D888952B374A9A00C1E482 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F8D888972B374AA000C1E482 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F8D888992B39B3D700C1E482 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		F8D888A02B39E60200C1E482 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F8D888A42B39E6D400C1E482 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +100,158 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02932DA377C835DE5955DBE /* Pods_EasyBizLedger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		744AAF1D7DA35657E9B164FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA10A838A5A2E699BAAE6F5C /* Pods_EasyBizLedger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB44876F801473DFE6035AA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */,
+				8E0276FA0516DD7DDDB29913 /* Pods-EasyBizLedger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F8C8EED82B49ACB1003449F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EED92B49ACCA003449F5 /* HomeViewModel.swift */,
+				F8C8EEE22B4AF040003449F5 /* AddCategoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F8C8EEDB2B4AAE0A003449F5 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEDD2B4AAE5F003449F5 /* Model */,
+				F8C8EEDC2B4AAE38003449F5 /* View */,
+				F8C8EED82B49ACB1003449F5 /* ViewModel */,
+				F8C8EEE42B6119D3003449F5 /* Cell */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		F8C8EEDC2B4AAE38003449F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8D888A02B39E60200C1E482 /* HomeViewController.swift */,
+				F8C8EEE02B4AE825003449F5 /* AddCategoryViewController.swift */,
+				F81E39252B7FBEF30053B8EF /* LedgerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8C8EEDD2B4AAE5F003449F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEDE2B4AAEC7003449F5 /* HomeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8C8EEE42B6119D3003449F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEE52B6119ED003449F5 /* HomeTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F8C8EEE92B650AE6003449F5 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EEE72B650AD6003449F5 /* CustomTableView.swift */,
+				F8CE73422B6E9951002A4E63 /* MyPickerView.swift */,
+				F8CE73462B725B39002A4E63 /* ClearableTextFieldCell.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		F8C8EF402B69FEEB003449F5 /* AddPage */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF412B69FEEB003449F5 /* ViewModel */,
+				F8C8EF462B69FEEB003449F5 /* Model */,
+				F8C8EF482B69FEEB003449F5 /* View */,
+				F8C8EF432B69FEEB003449F5 /* Cell */,
+			);
+			path = AddPage;
+			sourceTree = "<group>";
+		};
+		F8C8EF412B69FEEB003449F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF422B69FEEB003449F5 /* AddItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F8C8EF432B69FEEB003449F5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF452B69FEEB003449F5 /* PhotoTableViewCell.swift */,
+				F8C8EF442B69FEEB003449F5 /* CategoryTableViewCell.swift */,
+				F8C8EF4F2B6A0090003449F5 /* ItemTableViewCell.swift */,
+				F8C8EF512B6A00CB003449F5 /* PriceTableViewCell.swift */,
+				F8C8EF532B6A00FD003449F5 /* AmountTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F8C8EF462B69FEEB003449F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF472B69FEEB003449F5 /* AddItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8C8EF482B69FEEB003449F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF492B69FEEB003449F5 /* AddItemViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8C8EF552B6A5350003449F5 /* Local Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */,
+			);
+			path = "Local Storage";
+			sourceTree = "<group>";
+		};
+		F8C8EF582B6B6DD4003449F5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F8C8EF592B6BEC0E003449F5 /* HttpClient.swift */,
+				F8C8EF562B6A5885003449F5 /* LocalStorageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		F8CE8E712B32E0F800389230 = {
 			isa = PBXGroup;
 			children = (
+				F811F3E32B370B3000D5E744 /* .swiftlint.yml */,
 				F8CE8E7C2B32E0F900389230 /* EasyBizLedger */,
 				F8CE8E7B2B32E0F900389230 /* Products */,
+				BB44876F801473DFE6035AA3 /* Pods */,
+				744AAF1D7DA35657E9B164FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,14 +268,43 @@
 			children = (
 				F8CE8E7D2B32E0F900389230 /* AppDelegate.swift */,
 				F8CE8E7F2B32E0F900389230 /* SceneDelegate.swift */,
-				F8CE8E812B32E0F900389230 /* ViewController.swift */,
-				F8CE8E832B32E0F900389230 /* Main.storyboard */,
+				F8C8EEE92B650AE6003449F5 /* Custom */,
+				F8C8EF552B6A5350003449F5 /* Local Storage */,
+				F8C8EF582B6B6DD4003449F5 /* Managers */,
+				F8D888982B39B38100C1E482 /* View */,
+				F8D8889B2B39E4E000C1E482 /* Extension */,
+				F8C8EEDB2B4AAE0A003449F5 /* HomePage */,
+				F8C8EF402B69FEEB003449F5 /* AddPage */,
 				F8CE8E892B32E0FA00389230 /* Assets.xcassets */,
 				F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */,
 				F8CE8E8E2B32E0FA00389230 /* Info.plist */,
-				F8CE8E862B32E0F900389230 /* EasyBizLedger.xcdatamodeld */,
+				F8D888822B371C8700C1E482 /* GoogleService-Info.plist */,
+				F8D888902B3749BB00C1E482 /* Localizable.strings */,
+				F8D888962B374A9A00C1E482 /* InfoPlist.strings */,
 			);
 			path = EasyBizLedger;
+			sourceTree = "<group>";
+		};
+		F8D888982B39B38100C1E482 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8D888992B39B3D700C1E482 /* TabBarViewController.swift */,
+				F8D888A42B39E6D400C1E482 /* ListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8D8889B2B39E4E000C1E482 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F8D8889C2B39E4FB00C1E482 /* UINavigationController+Extension.swift */,
+				F8D8889E2B39E54E00C1E482 /* UIImage+Extension.swift */,
+				F8D888A62B44694D00C1E482 /* UIColor+Extension.swift */,
+				F8C8EEEA2B650B2F003449F5 /* UITableViewCell+Extension.swift */,
+				F8CE73402B6E98FE002A4E63 /* UITextField+Extension.swift */,
+				F8CE73442B70AF63002A4E63 /* NSLocalizedString+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +314,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8CE8E912B32E0FA00389230 /* Build configuration list for PBXNativeTarget "EasyBizLedger" */;
 			buildPhases = (
+				E13E431BB3E66BA6FB9DEEE1 /* [CP] Check Pods Manifest.lock */,
 				F8CE8E762B32E0F900389230 /* Sources */,
 				F8CE8E772B32E0F900389230 /* Frameworks */,
 				F8CE8E782B32E0F900389230 /* Resources */,
+				135999030492F6DE0EC38CDC /* [CP] Embed Pods Frameworks */,
+				F8CE8E942B35F00400389230 /* SwiftLint */,
+				F8D888812B371BAB00C1E482 /* FirebaseCrashlytics */,
 			);
 			buildRules = (
 			);
@@ -112,6 +353,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = F8CE8E712B32E0F800389230;
 			productRefGroup = F8CE8E7B2B32E0F900389230 /* Products */;
@@ -128,43 +370,162 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D8888E2B3749BB00C1E482 /* Localizable.strings in Resources */,
+				F8D888942B374A9A00C1E482 /* InfoPlist.strings in Resources */,
+				F811F3E42B370B3000D5E744 /* .swiftlint.yml in Resources */,
 				F8CE8E8D2B32E0FA00389230 /* LaunchScreen.storyboard in Resources */,
+				F8D888832B371C8700C1E482 /* GoogleService-Info.plist in Resources */,
 				F8CE8E8A2B32E0FA00389230 /* Assets.xcassets in Resources */,
-				F8CE8E852B32E0F900389230 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		135999030492F6DE0EC38CDC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyBizLedger/Pods-EasyBizLedger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E13E431BB3E66BA6FB9DEEE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyBizLedger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8CE8E942B35F00400389230 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		F8D888812B371BAB00C1E482 /* FirebaseCrashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = FirebaseCrashlytics;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8CE8E762B32E0F900389230 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8CE73432B6E9951002A4E63 /* MyPickerView.swift in Sources */,
+				F8CE73412B6E98FE002A4E63 /* UITextField+Extension.swift in Sources */,
 				F8CE8E882B32E0F900389230 /* EasyBizLedger.xcdatamodeld in Sources */,
-				F8CE8E822B32E0F900389230 /* ViewController.swift in Sources */,
+				F8C8EF522B6A00CB003449F5 /* PriceTableViewCell.swift in Sources */,
+				F8CE73452B70AF63002A4E63 /* NSLocalizedString+Extension.swift in Sources */,
+				F8C8EF572B6A5885003449F5 /* LocalStorageManager.swift in Sources */,
+				F8C8EEDA2B49ACCA003449F5 /* HomeViewModel.swift in Sources */,
+				F8D8889F2B39E54E00C1E482 /* UIImage+Extension.swift in Sources */,
+				F8C8EF4A2B69FEEB003449F5 /* AddItemViewModel.swift in Sources */,
+				F8D888A12B39E60200C1E482 /* HomeViewController.swift in Sources */,
+				F8C8EEEB2B650B2F003449F5 /* UITableViewCell+Extension.swift in Sources */,
 				F8CE8E7E2B32E0F900389230 /* AppDelegate.swift in Sources */,
+				F8C8EF4C2B69FEEB003449F5 /* PhotoTableViewCell.swift in Sources */,
+				F8C8EEE62B6119ED003449F5 /* HomeTableViewCell.swift in Sources */,
+				F8C8EEE12B4AE825003449F5 /* AddCategoryViewController.swift in Sources */,
+				F81E39262B7FBEF30053B8EF /* LedgerViewController.swift in Sources */,
+				F8D888A52B39E6D400C1E482 /* ListViewController.swift in Sources */,
+				F8C8EF4E2B69FEEB003449F5 /* AddItemViewController.swift in Sources */,
+				F8C8EEE32B4AF040003449F5 /* AddCategoryViewModel.swift in Sources */,
+				F8D8889A2B39B3D700C1E482 /* TabBarViewController.swift in Sources */,
+				F8CE73472B725B39002A4E63 /* ClearableTextFieldCell.swift in Sources */,
+				F8C8EEDF2B4AAEC7003449F5 /* HomeModel.swift in Sources */,
 				F8CE8E802B32E0F900389230 /* SceneDelegate.swift in Sources */,
+				F8D8889D2B39E4FB00C1E482 /* UINavigationController+Extension.swift in Sources */,
+				F8C8EEE82B650AD6003449F5 /* CustomTableView.swift in Sources */,
+				F8C8EF5A2B6BEC0E003449F5 /* HttpClient.swift in Sources */,
+				F8C8EF542B6A00FD003449F5 /* AmountTableViewCell.swift in Sources */,
+				F8D888A72B44694D00C1E482 /* UIColor+Extension.swift in Sources */,
+				F8C8EF4D2B69FEEB003449F5 /* AddItemModel.swift in Sources */,
+				F8C8EF502B6A0090003449F5 /* ItemTableViewCell.swift in Sources */,
+				F8C8EF4B2B69FEEB003449F5 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F8CE8E832B32E0F900389230 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8CE8E842B32E0F900389230 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F8CE8E8B2B32E0FA00389230 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F8CE8E8C2B32E0FA00389230 /* Base */,
+				F8D8888B2B37497D00C1E482 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F8D888902B3749BB00C1E482 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D8888F2B3749BB00C1E482 /* en */,
+				F8D888912B3749C300C1E482 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F8D888962B374A9A00C1E482 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8D888952B374A9A00C1E482 /* en */,
+				F8D888972B374AA000C1E482 /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -174,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -220,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -234,6 +596,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -274,7 +637,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -286,6 +649,7 @@
 		};
 		F8CE8E922B32E0FA00389230 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FBC93659741BEF4580A60AD /* Pods-EasyBizLedger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -296,9 +660,9 @@
 				INFOPLIST_FILE = EasyBizLedger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +678,7 @@
 		};
 		F8CE8E932B32E0FA00389230 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0276FA0516DD7DDDB29913 /* Pods-EasyBizLedger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -324,9 +689,9 @@
 				INFOPLIST_FILE = EasyBizLedger/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

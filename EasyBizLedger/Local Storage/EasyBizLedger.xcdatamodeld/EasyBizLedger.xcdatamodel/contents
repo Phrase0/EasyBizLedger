@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LSCategory" representedClassName=".LSCategory" parentEntity="LSLedger" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LSItem" inverseName="category" inverseEntity="LSItem"/>
+        <relationship name="ledger" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LSLedger" inverseName="categories" inverseEntity="LSLedger"/>
+    </entity>
+    <entity name="LSItem" representedClassName=".LSItem" parentEntity="LSCategory" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="itemName" optional="YES" attributeType="String"/>
+        <attribute name="photo" optional="YES" attributeType="Binary"/>
+        <attribute name="price" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LSCategory" inverseName="items" inverseEntity="LSCategory"/>
+    </entity>
+    <entity name="LSLedger" representedClassName=".LSLedger" syncable="YES" codeGenerationType="class">
+        <attribute name="ledgerTitle" optional="YES" attributeType="String"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LSCategory" inverseName="ledger" inverseEntity="LSCategory"/>
+    </entity>
+</model>
